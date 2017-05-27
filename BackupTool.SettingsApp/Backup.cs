@@ -12,6 +12,7 @@ namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
         public Backup() {
             InitializeComponent();
+            MessageBox.Show("Ola :D");
         }
     }
 }

@@ -46,3 +46,19 @@ C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool
 C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool.SettingsApp.csproj.GenerateResource.Cache
 C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\DC Backup Tool - Settings.exe
 C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\DC Backup Tool - Settings.pdb
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\DC Backup Tool - Settings.exe.config
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\DC Backup Tool - Settings.exe
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\DC Backup Tool - Settings.pdb
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\INIFileParser.dll
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\Microsoft.Graph.Core.dll
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\Microsoft.OneDrive.Sdk.dll
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\INIFileParser.xml
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool.SettingsApp.csprojResolveAssemblyReference.cache
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool.SettingsApp.Backup.resources
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\DC_Backup_Tool___Settings.Main.resources
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool.SettingsApp.Properties.Resources.resources
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\BackupTool.SettingsApp.csproj.GenerateResource.Cache
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\DC Backup Tool - Settings.exe
+C:\Users\Leona\Source\Repos\DCBackup\BackupTool.SettingsApp\obj\Debug\DC Backup Tool - Settings.pdb
