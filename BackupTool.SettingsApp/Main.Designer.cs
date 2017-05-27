@@ -32,7 +32,6 @@
             this.opçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logFileWatcher = new System.IO.FileSystemWatcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.mainAppPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -122,6 +121,7 @@
             this.Controls.Add(this.mainAppPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "DC Backup Tool";
             this.mainAppPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).EndInit();
@@ -142,7 +142,6 @@
         private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem;
         private System.IO.FileSystemWatcher logFileWatcher;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.DataGridView listBackupProfiles;
         private System.Windows.Forms.Button updateProfiles;
     }
