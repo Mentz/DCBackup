@@ -12,6 +12,7 @@ namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
         public Backup() {
             InitializeComponent();
+            this.MaximumSize = this.MinimumSize = this.Size;
         }
     }
 }

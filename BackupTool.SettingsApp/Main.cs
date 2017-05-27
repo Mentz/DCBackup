@@ -18,6 +18,7 @@ namespace DC_Backup_Tool___Settings {
 
         public Main() {
             InitializeComponent();
+            this.MaximumSize = this.MinimumSize = this.Size;
         }
 
         private void configurarBackupsToolStripMenuItem_Click(object sender, EventArgs e) {
