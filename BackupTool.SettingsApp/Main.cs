@@ -33,9 +33,10 @@ namespace DC_Backup_Tool___Settings {
 
         private void updateProfiles_Click(object sender, EventArgs e) {
             IniData ini = IniParser.ReadFile("C:/Users/Lucas/Desktop/teste.ini");
-            backupProfile teste = new backupProfile(ini["Backup"]["Nome"],
-                                                    ini["Backup"]["Tipo"],
-                                                    ini["Backup"]["Agenda"]);
+            List<backupProfile> teste = new List<backupProfile>();
+            teste.Add(new backupProfile(ini["Backup"]["Nome"],
+                                        ini["Backup"]["Tipo"],
+                                        ini["Backup"]["Agenda"]));
             listBackupProfiles.DataSource = teste;
             listBackupProfiles.Refresh();
         }
