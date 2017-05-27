@@ -13,6 +13,9 @@ namespace BackupTool.SettingsApp {
         public Backup() {
             InitializeComponent();
             MessageBox.Show("Ola :D");
+            Tab1.Controls.Remove(tabPage2);
+            Tab1.Controls.Add(tabPage1);
+            Tab1.TabPages.
         }
     }
 }
