@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DC_Backup_Tool___Settings {
     public partial class Main: Form {
@@ -25,12 +26,11 @@ namespace DC_Backup_Tool___Settings {
         }
 
         private void updateProfiles_Click(object sender, EventArgs e) {
-            var a = openFileDialog1.ShowDialog();
-            if (a.ToString().Equals("OK")) {
-                var b = openFileDialog1.FileName;
-                MessageBox.Show(b.ToString());
-            }
-            IniData ini = IniParser.ReadFile(b.ToString());
+            string path = Path.GetPathRoot(Environment.SystemDirectory);
+            path = Path.GetFullPath(path);
+            string newPath = Path.GetFullPath(path + "teste.ini");
+            MessageBox.Show("path = " + path + "\nnewPath = " + newPath);
+            IniData ini = IniParser.ReadFile(newPath);
             List<backupProfile> teste = new List<backupProfile>();
             teste.Add(new backupProfile(ini["Backup"]["Nome"],
                                         ini["Backup"]["Tipo"],

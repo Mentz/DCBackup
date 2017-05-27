@@ -121,6 +121,7 @@
             this.Controls.Add(this.mainAppPanel);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "DC Backup Tool";
             this.mainAppPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).EndInit();
