@@ -24,14 +24,9 @@ namespace DC_Backup_Tool___Settings {
             backupSetupDialog.Show();
         }
 
-        private void UploadButton_Click(object sender, EventArgs e) {
-            FileIniDataParser teste = new FileIniDataParser();
-            IniData ini = teste.ReadFile("C:/Users/Lucas/Desktop/teste.ini");
-            string file = ini["Backup"]["BackupFile"];
-            MessageBox.Show(file);
-        }
-
         private void updateProfiles_Click(object sender, EventArgs e) {
+            var a = openFileDialog1.ShowDialog();
+            MessageBox.Show(a);
             IniData ini = IniParser.ReadFile("C:/Users/Lucas/Desktop/teste.ini");
             List<backupProfile> teste = new List<backupProfile>();
             teste.Add(new backupProfile(ini["Backup"]["Nome"],
