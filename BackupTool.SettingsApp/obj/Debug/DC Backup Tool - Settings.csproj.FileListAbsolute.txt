@@ -1,0 +1,9 @@
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\bin\Debug\DC Backup Tool - Settings.exe.config
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\bin\Debug\DC Backup Tool - Settings.exe
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\bin\Debug\DC Backup Tool - Settings.pdb
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC Backup Tool - Settings.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC_Backup_Tool___Settings.Form1.resources
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC_Backup_Tool___Settings.Properties.Resources.resources
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC Backup Tool - Settings.csproj.GenerateResource.Cache
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC Backup Tool - Settings.exe
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool - Settings\DC Backup Tool - Settings\obj\Debug\DC Backup Tool - Settings.pdb

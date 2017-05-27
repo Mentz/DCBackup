@@ -1,0 +1,16 @@
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\bin\Debug\BackupTool.Service.exe.config
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\bin\Debug\BackupTool.Service.exe
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\bin\Debug\BackupTool.Service.pdb
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\obj\Debug\BackupTool.Service.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\obj\Debug\BackupTool.Service.DCBackupToolService.resources
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\obj\Debug\BackupTool.Service.csproj.GenerateResource.Cache
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\obj\Debug\BackupTool.Service.exe
+C:\Users\Lucas\Dropbox\DataCompany Backup Tool\DC Backup Tool\BackupTool.Service\obj\Debug\BackupTool.Service.pdb
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\bin\Debug\BackupTool.Service.exe.config
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\bin\Debug\BackupTool.Service.exe
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\bin\Debug\BackupTool.Service.pdb
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\obj\Debug\BackupTool.Service.csprojResolveAssemblyReference.cache
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\obj\Debug\BackupTool.Service.DCBackupToolService.resources
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\obj\Debug\BackupTool.Service.csproj.GenerateResource.Cache
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\obj\Debug\BackupTool.Service.exe
+C:\Users\Lucas\Source\Repos\DCBackup\BackupTool.Service\obj\Debug\BackupTool.Service.pdb
