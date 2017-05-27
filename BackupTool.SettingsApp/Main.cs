@@ -26,8 +26,11 @@ namespace DC_Backup_Tool___Settings {
 
         private void updateProfiles_Click(object sender, EventArgs e) {
             var a = openFileDialog1.ShowDialog();
-            MessageBox.Show(a);
-            IniData ini = IniParser.ReadFile("C:/Users/Lucas/Desktop/teste.ini");
+            if (a.ToString().Equals("OK")) {
+                var b = openFileDialog1.FileName;
+                MessageBox.Show(b.ToString());
+            }
+            IniData ini = IniParser.ReadFile(b.ToString());
             List<backupProfile> teste = new List<backupProfile>();
             teste.Add(new backupProfile(ini["Backup"]["Nome"],
                                         ini["Backup"]["Tipo"],
@@ -38,21 +41,16 @@ namespace DC_Backup_Tool___Settings {
     }
 
     class backupProfile {
-        public string ProfileName { get; set; }
-        public int ProfileType { get; set; }
+        public string Nome { get; set; }
+        public int Tipo { get; set; }
         public DateTime Agenda { get; set; }
 
         public backupProfile(string pfName, string type, string dataehora) {
-            ProfileName = pfName;
-            ProfileType = int.Parse(type);
+            Nome = pfName;
+            Tipo = int.Parse(type);
             DateTime today = DateTime.Today;
             string[] splitdt = dataehora.Split(':');
             Agenda = new DateTime(today.Year, today.Month, today.Day, int.Parse(splitdt[0]), int.Parse(splitdt[1]), 0);
         }
-
-        /*
-        public override string ToString() {
-            string ret = 
-        }*/
     }
 }
