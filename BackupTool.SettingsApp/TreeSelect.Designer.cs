@@ -65,6 +65,7 @@
             this.Controls.Add(this.treeViewMultiSelect);
             this.Name = "TreeSelect";
             this.Text = "TreeSelect";
+            this.Shown += new System.EventHandler(this.TreeSelect_Shown);
             this.ResumeLayout(false);
 
         }

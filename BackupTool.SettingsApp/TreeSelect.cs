@@ -24,25 +24,24 @@ namespace BackupTool.SettingsApp {
         TreeNode previousNode;
 
         private void TreeSelect_Shown(object sender, EventArgs e) {
-            String directory = Environment.GetFolderPath(
-                Environment.SpecialFolder.MyDocuments);
+            string directory = Path.GetPathRoot(Environment.SystemDirectory);
             BuildTree(directory, null);
         }
 
-        private void BuildTree(String directory, TreeNode node) {
+        private void BuildTree(string directory, TreeNode node) {
             try {
-                String[] subdirectories = Directory.GetDirectories(directory);
-                foreach (String subdirectory in subdirectories) {
-                    String name = Path.GetFileName(subdirectory);
+                string[] subdirectories = Directory.GetDirectories(directory);
+                foreach (string subdirectory in subdirectories) {
+                    string name = Path.GetFileName(subdirectory);
                     TreeNode subnode = (node == null) ?
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
                     subnode.NodeFont = boldFont;
                     subnode.Text = subnode.Text; // google: 94354 treenode
-                    BuildTree(subdirectory, subnode);
+                    //BuildTree(subdirectory, subnode);
                 }
-                String[] files = Directory.GetFiles(directory);
-                foreach (String file in files) {
-                    String name = Path.GetFileName(file);
+                string[] files = Directory.GetFiles(directory);
+                foreach (string file in files) {
+                    string name = Path.GetFileName(file);
                     TreeNode subnode = (node == null) ?
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
                     subnode.NodeFont = normalFont;
