@@ -25,15 +25,19 @@
         private void InitializeComponent() {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelBackupType = new System.Windows.Forms.Label();
+            this.radioButtonFolders = new System.Windows.Forms.RadioButton();
+            this.radioButtonFiles = new System.Windows.Forms.RadioButton();
+            this.buttonRemoveItem = new System.Windows.Forms.Button();
+            this.listBoxSelectedItems = new System.Windows.Forms.ListBox();
+            this.buttonAddItem = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.FolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -50,10 +54,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.buttonRemoveItem);
+            this.tabPage1.Controls.Add(this.listBoxSelectedItems);
+            this.tabPage1.Controls.Add(this.buttonAddItem);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -62,47 +66,82 @@
             this.tabPage1.Text = "Configurações";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // panel1
             // 
-            this.button3.Location = new System.Drawing.Point(607, 170);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Remover";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.panel1.Controls.Add(this.labelBackupType);
+            this.panel1.Controls.Add(this.radioButtonFolders);
+            this.panel1.Controls.Add(this.radioButtonFiles);
+            this.panel1.Location = new System.Drawing.Point(7, 96);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(137, 68);
+            this.panel1.TabIndex = 4;
             // 
-            // button2
+            // labelBackupType
             // 
-            this.button2.Location = new System.Drawing.Point(6, 141);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Adicionar pasta";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.labelBackupType.AutoSize = true;
+            this.labelBackupType.Location = new System.Drawing.Point(4, 4);
+            this.labelBackupType.Name = "labelBackupType";
+            this.labelBackupType.Size = new System.Drawing.Size(82, 13);
+            this.labelBackupType.TabIndex = 2;
+            this.labelBackupType.Text = "Tipo de backup";
             // 
-            // listBox1
+            // radioButtonFolders
             // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 199);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(673, 158);
-            this.listBox1.TabIndex = 1;
+            this.radioButtonFolders.AutoSize = true;
+            this.radioButtonFolders.Location = new System.Drawing.Point(4, 46);
+            this.radioButtonFolders.Name = "radioButtonFolders";
+            this.radioButtonFolders.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButtonFolders.Size = new System.Drawing.Size(75, 17);
+            this.radioButtonFolders.TabIndex = 1;
+            this.radioButtonFolders.Text = "Por pastas";
+            this.radioButtonFolders.UseVisualStyleBackColor = true;
+            this.radioButtonFolders.CheckedChanged += new System.EventHandler(this.radioButtonFolders_CheckedChanged);
             // 
-            // button1
+            // radioButtonFiles
             // 
-            this.button1.Location = new System.Drawing.Point(3, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Adicionar arquivo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.radioButtonFiles.AutoSize = true;
+            this.radioButtonFiles.Checked = true;
+            this.radioButtonFiles.Location = new System.Drawing.Point(4, 23);
+            this.radioButtonFiles.Name = "radioButtonFiles";
+            this.radioButtonFiles.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButtonFiles.Size = new System.Drawing.Size(84, 17);
+            this.radioButtonFiles.TabIndex = 0;
+            this.radioButtonFiles.TabStop = true;
+            this.radioButtonFiles.Text = "Por arquivos";
+            this.radioButtonFiles.UseVisualStyleBackColor = true;
+            this.radioButtonFiles.CheckedChanged += new System.EventHandler(this.radioButtonFiles_CheckedChanged);
+            // 
+            // buttonRemoveItem
+            // 
+            this.buttonRemoveItem.Location = new System.Drawing.Point(604, 170);
+            this.buttonRemoveItem.Name = "buttonRemoveItem";
+            this.buttonRemoveItem.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemoveItem.TabIndex = 3;
+            this.buttonRemoveItem.Text = "Remover";
+            this.buttonRemoveItem.UseVisualStyleBackColor = true;
+            this.buttonRemoveItem.Click += new System.EventHandler(this.buttonRemoveItem_Click);
+            // 
+            // listBoxSelectedItems
+            // 
+            this.listBoxSelectedItems.BackColor = System.Drawing.SystemColors.Window;
+            this.listBoxSelectedItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBoxSelectedItems.FormattingEnabled = true;
+            this.listBoxSelectedItems.Location = new System.Drawing.Point(6, 199);
+            this.listBoxSelectedItems.Name = "listBoxSelectedItems";
+            this.listBoxSelectedItems.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listBoxSelectedItems.ScrollAlwaysVisible = true;
+            this.listBoxSelectedItems.Size = new System.Drawing.Size(673, 158);
+            this.listBoxSelectedItems.TabIndex = 1;
+            // 
+            // buttonAddItem
+            // 
+            this.buttonAddItem.Location = new System.Drawing.Point(6, 170);
+            this.buttonAddItem.Name = "buttonAddItem";
+            this.buttonAddItem.Size = new System.Drawing.Size(138, 23);
+            this.buttonAddItem.TabIndex = 0;
+            this.buttonAddItem.Text = "Adicionar itens";
+            this.buttonAddItem.UseVisualStyleBackColor = true;
+            this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click);
             // 
             // tabPage2
             // 
@@ -129,6 +168,8 @@
             this.Text = "Configurar perfis de backup";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -138,11 +179,14 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBoxSelectedItems;
+        private System.Windows.Forms.Button buttonAddItem;
         private System.Windows.Forms.FolderBrowserDialog FolderDialog;
         private System.Windows.Forms.OpenFileDialog FileDialog;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonRemoveItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelBackupType;
+        private System.Windows.Forms.RadioButton radioButtonFolders;
+        private System.Windows.Forms.RadioButton radioButtonFiles;
     }
 }
