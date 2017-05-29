@@ -14,6 +14,7 @@ namespace BackupTool.SettingsApp {
             selectedNodes = new List<TreeNode>();
             normalFont = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
             InitializeComponent();
+            treeViewMultiSelect.ImageList = IconList;
         }
         
         Font normalFont;
@@ -43,6 +44,7 @@ namespace BackupTool.SettingsApp {
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
                     subnode.NodeFont = normalFont;
                     subnode.Text = subnode.Text; // google: 94354 treenode
+                    subnode.ImageIndex = 0;
                     BuildTree(subdirectory, subnode, depth - 1);
                 }
                 /* NÃO QUEREMOS SELECIONAR ARQUIVOS AQUI.

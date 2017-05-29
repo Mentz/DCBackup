@@ -23,9 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeSelect));
             this.treeViewMultiSelect = new System.Windows.Forms.TreeView();
             this.buttonTreeViewConfirm = new System.Windows.Forms.Button();
             this.buttonTreeViewCancel = new System.Windows.Forms.Button();
+            this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // treeViewMultiSelect
@@ -59,6 +62,12 @@
             this.buttonTreeViewCancel.UseVisualStyleBackColor = true;
             this.buttonTreeViewCancel.Click += new System.EventHandler(this.buttonTreeViewCancel_Click);
             // 
+            // IconList
+            // 
+            this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
+            this.IconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.IconList.Images.SetKeyName(0, "folder1.png");
+            // 
             // TreeSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,5 +88,6 @@
         private System.Windows.Forms.TreeView treeViewMultiSelect;
         private System.Windows.Forms.Button buttonTreeViewConfirm;
         private System.Windows.Forms.Button buttonTreeViewCancel;
+        private System.Windows.Forms.ImageList IconList;
     }
 }
