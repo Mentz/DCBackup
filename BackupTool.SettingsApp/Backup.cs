@@ -10,10 +10,13 @@ using System.Windows.Forms;
 
 namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
-        public Backup() {
+        public Backup(List<string> itemList) {
             InitializeComponent();
             this.MaximumSize = this.MinimumSize = this.Size;
+            backupItemList = itemList;
         }
+
+        List<string> backupItemList = new List<string>();
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
@@ -35,9 +38,9 @@ namespace BackupTool.SettingsApp {
                 listBoxSelectedItems.DataSource = fileList;
             }
             else if (radioButtonFolders.Checked) {
-                //TreeSelect treeSelect = new TreeSelect();
-                //treeSelect.Show();
-                FolderDialog.ShowDialog();
+                TreeSelect treeSelect = new TreeSelect();
+                treeSelect.Show();
+                //FolderDialog.ShowDialog();
             }
             else {
                 MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo.");

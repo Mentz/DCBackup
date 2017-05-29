@@ -24,38 +24,23 @@
         /// </summary>
         private void InitializeComponent() {
             this.mainAppPanel = new System.Windows.Forms.Panel();
-            this.updateProfiles = new System.Windows.Forms.Button();
             this.listBackupProfiles = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurarBackupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logFileWatcher = new System.IO.FileSystemWatcher();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mainAppPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logFileWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // mainAppPanel
             // 
-            this.mainAppPanel.Controls.Add(this.updateProfiles);
             this.mainAppPanel.Controls.Add(this.listBackupProfiles);
             this.mainAppPanel.Location = new System.Drawing.Point(5, 27);
             this.mainAppPanel.Name = "mainAppPanel";
             this.mainAppPanel.Size = new System.Drawing.Size(960, 578);
             this.mainAppPanel.TabIndex = 0;
-            // 
-            // updateProfiles
-            // 
-            this.updateProfiles.Location = new System.Drawing.Point(444, 253);
-            this.updateProfiles.Name = "updateProfiles";
-            this.updateProfiles.Size = new System.Drawing.Size(75, 23);
-            this.updateProfiles.TabIndex = 1;
-            this.updateProfiles.Text = "teste load ini";
-            this.updateProfiles.UseVisualStyleBackColor = true;
-            this.updateProfiles.Click += new System.EventHandler(this.updateProfiles_Click);
             // 
             // listBackupProfiles
             // 
@@ -65,9 +50,17 @@
             this.listBackupProfiles.AllowUserToResizeRows = false;
             this.listBackupProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listBackupProfiles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.listBackupProfiles.CausesValidation = false;
+            this.listBackupProfiles.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.listBackupProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listBackupProfiles.Location = new System.Drawing.Point(5, 5);
             this.listBackupProfiles.Name = "listBackupProfiles";
+            this.listBackupProfiles.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.listBackupProfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listBackupProfiles.ShowCellErrors = false;
+            this.listBackupProfiles.ShowCellToolTips = false;
+            this.listBackupProfiles.ShowEditingIcon = false;
+            this.listBackupProfiles.ShowRowErrors = false;
             this.listBackupProfiles.Size = new System.Drawing.Size(950, 242);
             this.listBackupProfiles.TabIndex = 0;
             // 
@@ -104,15 +97,6 @@
             this.opçõesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.opçõesToolStripMenuItem.Text = "Opções";
             // 
-            // logFileWatcher
-            // 
-            this.logFileWatcher.EnableRaisingEvents = true;
-            this.logFileWatcher.SynchronizingObject = this;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,11 +107,11 @@
             this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "DC Backup Tool";
+            this.Shown += new System.EventHandler(this.Main_Shown);
             this.mainAppPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logFileWatcher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,10 +124,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurarBackupsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem;
-        private System.IO.FileSystemWatcher logFileWatcher;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridView listBackupProfiles;
-        private System.Windows.Forms.Button updateProfiles;
     }
 }
 

@@ -6,19 +6,16 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BackupTool.SettingsApp {
     public partial class TreeSelect: Form {
         public TreeSelect() {
             selectedNodes = new List<TreeNode>();
-            boldFont = new Font("Arial", 10, FontStyle.Bold);
-            normalFont = new Font("Arial", 10, FontStyle.Regular);
+            normalFont = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
             InitializeComponent();
         }
-
-        Font boldFont;
+        
         Font normalFont;
         List<TreeNode> selectedNodes;
         TreeNode previousNode;
@@ -44,10 +41,12 @@ namespace BackupTool.SettingsApp {
                     string name = Path.GetFileName(subdirectory);
                     TreeNode subnode = (node == null) ?
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
-                    subnode.NodeFont = boldFont;
+                    subnode.NodeFont = normalFont;
                     subnode.Text = subnode.Text; // google: 94354 treenode
                     BuildTree(subdirectory, subnode, depth - 1);
                 }
+                /* NÃO QUEREMOS SELECIONAR ARQUIVOS AQUI.
+                 * 
                 string[] files = Directory.GetFiles(directory);
                 foreach (string file in files) {
                     string name = Path.GetFileName(file);
@@ -56,6 +55,7 @@ namespace BackupTool.SettingsApp {
                     subnode.NodeFont = normalFont;
                     subnode.Text = subnode.Text; // google: 94354 treenode
                 }
+                */
             }
             catch (Exception) {
                 // Ignore exception, e.g. when access to a folder denied
@@ -168,6 +168,10 @@ namespace BackupTool.SettingsApp {
 
         private void buttonTreeViewCancel_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void buttonTreeViewConfirm_Click(object sender, EventArgs e) {
+            
         }
     }
 }

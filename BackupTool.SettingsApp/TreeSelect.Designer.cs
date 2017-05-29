@@ -30,6 +30,7 @@
             // 
             // treeViewMultiSelect
             // 
+            this.treeViewMultiSelect.CheckBoxes = true;
             this.treeViewMultiSelect.Location = new System.Drawing.Point(5, 5);
             this.treeViewMultiSelect.Name = "treeViewMultiSelect";
             this.treeViewMultiSelect.Size = new System.Drawing.Size(389, 384);
@@ -46,6 +47,7 @@
             this.buttonTreeViewConfirm.TabIndex = 1;
             this.buttonTreeViewConfirm.Text = "Confirmar";
             this.buttonTreeViewConfirm.UseVisualStyleBackColor = true;
+            this.buttonTreeViewConfirm.Click += new System.EventHandler(this.buttonTreeViewConfirm_Click);
             // 
             // buttonTreeViewCancel
             // 

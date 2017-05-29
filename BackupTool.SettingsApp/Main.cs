@@ -21,23 +21,71 @@ namespace DC_Backup_Tool___Settings {
             this.MaximumSize = this.MinimumSize = this.Size;
         }
 
-        private void configurarBackupsToolStripMenuItem_Click(object sender, EventArgs e) {
-            BackupTool.SettingsApp.Backup backupSetupDialog = new BackupTool.SettingsApp.Backup();
-            backupSetupDialog.Show();
+        /// <summary>
+        /// Verificar componentes necessários na inicialização
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Main_Shown(object sender, EventArgs e) {
+            string configFilePath = Path.GetPathRoot(Environment.SystemDirectory);
+            configFilePath = Path.Combine(configFilePath, "ProgramData/DCBackup/config.ini");
+
+            try {
+                if (!Directory.Exists(Path.GetDirectoryName(configFilePath)))
+                    throw new DirectoryNotFoundException("Diretório 'C:\\ProgramData\\DCBackup' inexistente");
+                if (!System.IO.File.Exists(configFilePath))
+                    throw new FileNotFoundException("Arquivo " + Path.GetFileName(configFilePath) + "inexistente no diretório 'C:\\ProgramData\\DCBackup'");
+            }
+            catch (DirectoryNotFoundException ex) {
+                Directory.CreateDirectory(Path.GetDirectoryName(configFilePath));
+                firstTime();
+                var key = MessageBox.Show("Primeiro acesso ao programa.\nDeseja configurar um perfil agora?",
+                    "Primeiro acesso",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Information);
+                MessageBox.Show(key.ToString());
+            }
+            catch (FileNotFoundException ex) {
+                firstTime();
+                var key = MessageBox.Show("Primeiro acesso ao programa.\nDeseja configurar um perfil agora?",
+                    "Primeiro acesso",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Erro genérico\nApresente os dados abaixo para o programador:\n" + ex.ToString()); // Nothing to do yet
+            }
+
+            IniData configParameters = IniParser.ReadFile(configFilePath);
+
+            List<string> profiles = new List<string>();
+            if (configParameters["instance"]["backupprofiles"] != null)
+                profiles.AddRange(configParameters["instance"]["backupprofiles"].Split('|'));
+
+            MessageBox.Show(profiles.ToString());
+            List<backupProfile> backupProfiles = new List<backupProfile>();
+            foreach (string profile in profiles) {
+                backupProfiles.Add(new backupProfile(profile, configParameters[profile]["type"], configParameters[profile]["triggertime"]));
+            }
+
+            MessageBox.Show(backupProfiles.ToString());
+            listBackupProfiles.DataSource = null;
+            listBackupProfiles.DataSource = backupProfiles;
+            listBackupProfiles.Refresh();
         }
 
-        private void updateProfiles_Click(object sender, EventArgs e) {
-            string path = Path.GetPathRoot(Environment.SystemDirectory);
-            path = Path.GetFullPath(path);
-            string newPath = Path.GetFullPath(path + "teste.ini");
-            MessageBox.Show("path = " + path + "\nnewPath = " + newPath);
-            IniData ini = IniParser.ReadFile(newPath);
-            List<backupProfile> teste = new List<backupProfile>();
-            teste.Add(new backupProfile(ini["Backup"]["Nome"],
-                                        ini["Backup"]["Tipo"],
-                                        ini["Backup"]["Agenda"]));
-            listBackupProfiles.DataSource = teste;
-            listBackupProfiles.Refresh();
+        private void firstTime() {
+            string configFilePath = Path.GetFullPath(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory),"ProgramData/DCBackup/config.ini"));
+            IniData newFile = new IniData();
+            newFile["instance"]["creation"] = DateTime.Now.ToString();
+            newFile["instance"]["backupprofiles"] = "";
+            FileIniDataParser parser = new FileIniDataParser();
+            parser.WriteFile(configFilePath, newFile);
+        }
+
+        private void configurarBackupsToolStripMenuItem_Click(object sender, EventArgs e) {
+            BackupTool.SettingsApp.Backup backupSetupDialog = new BackupTool.SettingsApp.Backup(null);
+            backupSetupDialog.Show();
         }
     }
 
