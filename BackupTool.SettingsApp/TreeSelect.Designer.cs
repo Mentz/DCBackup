@@ -34,6 +34,7 @@
             this.treeViewMultiSelect.Name = "treeViewMultiSelect";
             this.treeViewMultiSelect.Size = new System.Drawing.Size(389, 384);
             this.treeViewMultiSelect.TabIndex = 0;
+            this.treeViewMultiSelect.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeExpand);
             this.treeViewMultiSelect.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeSelect);
             this.treeViewMultiSelect.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewMultiSelect_MouseDown);
             // 
@@ -54,6 +55,7 @@
             this.buttonTreeViewCancel.TabIndex = 2;
             this.buttonTreeViewCancel.Text = "Cancelar";
             this.buttonTreeViewCancel.UseVisualStyleBackColor = true;
+            this.buttonTreeViewCancel.Click += new System.EventHandler(this.buttonTreeViewCancel_Click);
             // 
             // TreeSelect
             // 

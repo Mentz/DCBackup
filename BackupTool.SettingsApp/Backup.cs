@@ -35,8 +35,9 @@ namespace BackupTool.SettingsApp {
                 listBoxSelectedItems.DataSource = fileList;
             }
             else if (radioButtonFolders.Checked) {
-                TreeSelect treeSelect = new TreeSelect();
-                treeSelect.Show();
+                //TreeSelect treeSelect = new TreeSelect();
+                //treeSelect.Show();
+                FolderDialog.ShowDialog();
             }
             else {
                 MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo.");
@@ -44,7 +45,16 @@ namespace BackupTool.SettingsApp {
         }
 
         private void buttonRemoveItem_Click(object sender, EventArgs e) {
-
+            if (listBoxSelectedItems.SelectedIndex == -1) {
+                MessageBox.Show("Selecione um item para remover.");
+            } else {
+                List<string> itens = new List<string>();
+                foreach (string ex in listBoxSelectedItems.Items)
+                    itens.Add(ex);
+                itens.RemoveAt(listBoxSelectedItems.SelectedIndex);
+                listBoxSelectedItems.DataSource = null;
+                listBoxSelectedItems.DataSource = itens;
+            }
         }
     }
 }

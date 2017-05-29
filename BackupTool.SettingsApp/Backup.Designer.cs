@@ -153,6 +153,10 @@
             this.tabPage2.Text = "Agendamento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // FolderDialog
+            // 
+            this.FolderDialog.ShowNewFolderButton = false;
+            // 
             // FileDialog
             // 
             this.FileDialog.Multiselect = true;

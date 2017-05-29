@@ -25,10 +25,19 @@ namespace BackupTool.SettingsApp {
 
         private void TreeSelect_Shown(object sender, EventArgs e) {
             string directory = Path.GetPathRoot(Environment.SystemDirectory);
-            BuildTree(directory, null);
+            BuildTree(directory, null, 2);
         }
 
-        private void BuildTree(string directory, TreeNode node) {
+        private void treeViewMultiSelect_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
+            string directory = Path.GetPathRoot(Environment.SystemDirectory);
+            directory = Path.Combine(directory, e.Node.FullPath);
+            BuildTree(directory, e.Node, 2);
+        }
+
+        private void BuildTree(string directory, TreeNode node, int depth) {
+            if (depth == 0) {
+                return;
+            }
             try {
                 string[] subdirectories = Directory.GetDirectories(directory);
                 foreach (string subdirectory in subdirectories) {
@@ -37,7 +46,7 @@ namespace BackupTool.SettingsApp {
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
                     subnode.NodeFont = boldFont;
                     subnode.Text = subnode.Text; // google: 94354 treenode
-                    //BuildTree(subdirectory, subnode);
+                    BuildTree(subdirectory, subnode, depth - 1);
                 }
                 string[] files = Directory.GetFiles(directory);
                 foreach (string file in files) {
@@ -155,6 +164,10 @@ namespace BackupTool.SettingsApp {
                 n.ForeColor = treeViewMultiSelect.ForeColor;
                 selectedNodes.Remove(n);
             }
+        }
+
+        private void buttonTreeViewCancel_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }
