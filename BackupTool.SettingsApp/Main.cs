@@ -43,7 +43,7 @@ namespace DC_Backup_Tool___Settings {
                     "Primeiro acesso",
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Information);
-                MessageBox.Show(key.ToString());
+                //MessageBox.Show(key.ToString());
             }
             catch (FileNotFoundException ex) {
                 firstTime();
@@ -62,13 +62,13 @@ namespace DC_Backup_Tool___Settings {
             if (configParameters["instance"]["backupprofiles"] != null)
                 profiles.AddRange(configParameters["instance"]["backupprofiles"].Split('|'));
 
-            MessageBox.Show(profiles.ToString());
             List<backupProfile> backupProfiles = new List<backupProfile>();
             foreach (string profile in profiles) {
-                backupProfiles.Add(new backupProfile(profile, configParameters[profile]["type"], configParameters[profile]["triggertime"]));
+                if (configParameters.Sections.ContainsSection(profile))
+                    backupProfiles.Add(new backupProfile(profile, configParameters[profile]["type"], configParameters[profile]["triggertime"]));
             }
 
-            MessageBox.Show(backupProfiles.ToString());
+            //MessageBox.Show(backupProfiles.ToString());
             listBackupProfiles.DataSource = null;
             listBackupProfiles.DataSource = backupProfiles;
             listBackupProfiles.Refresh();

@@ -74,7 +74,7 @@
             this.panel1.Location = new System.Drawing.Point(7, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(137, 68);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 0;
             // 
             // labelBackupType
             // 
@@ -131,14 +131,14 @@
             this.listBoxSelectedItems.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listBoxSelectedItems.ScrollAlwaysVisible = true;
             this.listBoxSelectedItems.Size = new System.Drawing.Size(673, 158);
-            this.listBoxSelectedItems.TabIndex = 1;
+            this.listBoxSelectedItems.TabIndex = 2;
             // 
             // buttonAddItem
             // 
             this.buttonAddItem.Location = new System.Drawing.Point(6, 170);
             this.buttonAddItem.Name = "buttonAddItem";
             this.buttonAddItem.Size = new System.Drawing.Size(138, 23);
-            this.buttonAddItem.TabIndex = 0;
+            this.buttonAddItem.TabIndex = 1;
             this.buttonAddItem.Text = "Adicionar itens";
             this.buttonAddItem.UseVisualStyleBackColor = true;
             this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click);

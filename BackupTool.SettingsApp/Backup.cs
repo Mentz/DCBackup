@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
+
+        static List<string> backupItemList = new List<string>();
+
         public Backup(List<string> itemList) {
             InitializeComponent();
             this.MaximumSize = this.MinimumSize = this.Size;
             backupItemList = itemList;
         }
-
-        List<string> backupItemList = new List<string>();
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
@@ -33,14 +34,12 @@ namespace BackupTool.SettingsApp {
         private void buttonAddItem_Click(object sender, EventArgs e) {
             if (radioButtonFiles.Checked) {
                 FileDialog.ShowDialog();
-                List<string> fileList = new List<string>();
-                fileList.AddRange(FileDialog.FileNames);
-                listBoxSelectedItems.DataSource = fileList;
+                backupItemList.AddRange(FileDialog.FileNames);
+                UpdateItemList();
             }
             else if (radioButtonFolders.Checked) {
                 TreeSelect treeSelect = new TreeSelect();
                 treeSelect.Show();
-                //FolderDialog.ShowDialog();
             }
             else {
                 MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo.");
@@ -51,18 +50,23 @@ namespace BackupTool.SettingsApp {
             if (listBoxSelectedItems.SelectedIndex == -1) {
                 MessageBox.Show("Selecione um item para remover.");
             } else {
-                List<string> itens = new List<string>();
-                foreach (string ex in listBoxSelectedItems.Items)
-                    itens.Add(ex);
-                itens.RemoveAt(listBoxSelectedItems.SelectedIndex);
-                listBoxSelectedItems.DataSource = null;
-                listBoxSelectedItems.DataSource = itens;
+                backupItemList.RemoveAt(listBoxSelectedItems.SelectedIndex);
+                UpdateItemList();
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        public void AddToItemList(List<string> items) {
+            foreach (string t in items) { 
+                MessageBox.Show(t);
+                //backupItemList.Add(t);
+            }
+            UpdateItemList();
+        }
 
+        private void UpdateItemList() {
+            MessageBox.Show("Lista de dados atualizada", "Olha eu aqui");
+            listBoxSelectedItems.DataSource = null;
+            listBoxSelectedItems.DataSource = backupItemList;
         }
     }
 }

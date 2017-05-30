@@ -38,23 +38,22 @@
             this.treeViewMultiSelect.Name = "treeViewMultiSelect";
             this.treeViewMultiSelect.Size = new System.Drawing.Size(389, 384);
             this.treeViewMultiSelect.TabIndex = 0;
+            this.treeViewMultiSelect.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeCheck);
             this.treeViewMultiSelect.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeExpand);
-            this.treeViewMultiSelect.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeSelect);
-            this.treeViewMultiSelect.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewMultiSelect_MouseDown);
             // 
             // buttonTreeViewConfirm
             // 
-            this.buttonTreeViewConfirm.Location = new System.Drawing.Point(320, 394);
+            this.buttonTreeViewConfirm.Location = new System.Drawing.Point(246, 394);
             this.buttonTreeViewConfirm.Name = "buttonTreeViewConfirm";
-            this.buttonTreeViewConfirm.Size = new System.Drawing.Size(75, 23);
+            this.buttonTreeViewConfirm.Size = new System.Drawing.Size(148, 23);
             this.buttonTreeViewConfirm.TabIndex = 1;
-            this.buttonTreeViewConfirm.Text = "Confirmar";
+            this.buttonTreeViewConfirm.Text = "Adicionar selecionados";
             this.buttonTreeViewConfirm.UseVisualStyleBackColor = true;
             this.buttonTreeViewConfirm.Click += new System.EventHandler(this.buttonTreeViewConfirm_Click);
             // 
             // buttonTreeViewCancel
             // 
-            this.buttonTreeViewCancel.Location = new System.Drawing.Point(239, 394);
+            this.buttonTreeViewCancel.Location = new System.Drawing.Point(167, 394);
             this.buttonTreeViewCancel.Name = "buttonTreeViewCancel";
             this.buttonTreeViewCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonTreeViewCancel.TabIndex = 2;

@@ -16,20 +16,21 @@ namespace BackupTool.SettingsApp {
             InitializeComponent();
             treeViewMultiSelect.ImageList = IconList;
         }
-        
+
         Font normalFont;
         List<TreeNode> selectedNodes;
-        TreeNode previousNode;
+        //TreeNode previousNode;
 
         private void TreeSelect_Shown(object sender, EventArgs e) {
             string directory = Path.GetPathRoot(Environment.SystemDirectory);
-            BuildTree(directory, null, 2);
+            treeViewMultiSelect.Nodes.Add(directory.Remove(directory.Length - 1));
+            BuildTree(directory, treeViewMultiSelect.Nodes[0], 2);
         }
 
         private void treeViewMultiSelect_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
             string directory = Path.GetPathRoot(Environment.SystemDirectory);
             directory = Path.Combine(directory, e.Node.FullPath);
-            BuildTree(directory, e.Node, 2);
+            BuildTree(directory, e.Node, 1);
         }
 
         private void BuildTree(string directory, TreeNode node, int depth) {
@@ -39,141 +40,41 @@ namespace BackupTool.SettingsApp {
             try {
                 string[] subdirectories = Directory.GetDirectories(directory);
                 foreach (string subdirectory in subdirectories) {
+                    if (directory != "C:")
+                        MessageBox.Show(subdirectory);
                     string name = Path.GetFileName(subdirectory);
                     TreeNode subnode = (node == null) ?
                         treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
                     subnode.NodeFont = normalFont;
-                    subnode.Text = subnode.Text; // google: 94354 treenode
+                    subnode.Text = subnode.Text;
                     subnode.ImageIndex = 0;
                     BuildTree(subdirectory, subnode, depth - 1);
                 }
-                /* NÃO QUEREMOS SELECIONAR ARQUIVOS AQUI.
-                 * 
-                string[] files = Directory.GetFiles(directory);
-                foreach (string file in files) {
-                    string name = Path.GetFileName(file);
-                    TreeNode subnode = (node == null) ?
-                        treeViewMultiSelect.Nodes.Add(name) : node.Nodes.Add(name);
-                    subnode.NodeFont = normalFont;
-                    subnode.Text = subnode.Text; // google: 94354 treenode
-                }
-                */
             }
             catch (Exception) {
                 // Ignore exception, e.g. when access to a folder denied
             }
         }
 
-        private void treeViewMultiSelect_BeforeSelect(object sender, TreeViewCancelEventArgs e) {
-            // cancel selection, the selection will be handled in MouseDown
-            e.Cancel = true;
-        }
-
-        private void treeViewMultiSelect_MouseDown(object sender, MouseEventArgs e) {
-            TreeNode currentNode = treeViewMultiSelect.GetNodeAt(e.Location);
-            if (currentNode == null) return;
-            currentNode.BackColor = treeViewMultiSelect.BackColor;
-            currentNode.ForeColor = treeViewMultiSelect.ForeColor;
-
-            bool control = (ModifierKeys == Keys.Control);
-            bool shift = (ModifierKeys == Keys.Shift);
-
-            if (control) {
-
-                // the node clicked with control button pressed:
-                // invert selection of the current node
-                List<TreeNode> addedNodes = new List<TreeNode>();
-                List<TreeNode> removedNodes = new List<TreeNode>();
-                if (!selectedNodes.Contains(currentNode)) {
-                    addedNodes.Add(currentNode);
-                    previousNode = currentNode;
-                }
-                else {
-                    removedNodes.Add(currentNode);
-                }
-                changeSelection(addedNodes, removedNodes);
-            }
-            else if (shift && previousNode != null) {
-                if (currentNode.Parent == previousNode.Parent) {
-                    // the node clicked with shift button pressed:
-                    // if current node and previously selected node
-                    // belongs to the same parent,
-                    // select range of nodes between these two
-                    List<TreeNode> addedNodes = new List<TreeNode>();
-                    List<TreeNode> removedNodes = new List<TreeNode>();
-                    bool selection = false;
-                    bool selectionEnd = false;
-
-                    TreeNodeCollection nodes = null;
-                    if (previousNode.Parent == null) {
-                        nodes = treeViewMultiSelect.Nodes;
-                    }
-                    else {
-                        nodes = previousNode.Parent.Nodes;
-                    }
-                    foreach (TreeNode n in nodes) {
-                        if (n == currentNode || n == previousNode) {
-                            if (selection) {
-                                selectionEnd = true;
-                            }
-                            if (!selection) {
-                                selection = true;
-                            }
-                        }
-                        if (selection && !selectedNodes.Contains(n)) {
-                            addedNodes.Add(n);
-                        }
-                        if (selectionEnd) {
-                            break;
-                        }
-                    }
-
-                    if (addedNodes.Count > 0) {
-                        changeSelection(addedNodes, removedNodes);
-                    }
-                }
-            }
-            else {
-                if (!currentNode.NodeFont.Bold) {
-                    // single click:
-                    // remove all selected nodes
-                    // and add current node
-                    List<TreeNode> addedNodes = new List<TreeNode>();
-                    List<TreeNode> removedNodes = new List<TreeNode>();
-                    removedNodes.AddRange(selectedNodes);
-                    if (removedNodes.Contains(currentNode)) {
-                        removedNodes.Remove(currentNode);
-                    }
-                    else {
-                        addedNodes.Add(currentNode);
-                    }
-                    changeSelection(addedNodes, removedNodes);
-                    previousNode = currentNode;
-                }
-            }
-        }
-
-        protected void changeSelection(List<TreeNode> addedNodes, List<TreeNode> removedNodes) {
-            foreach (TreeNode n in addedNodes) {
-                if (!n.NodeFont.Bold) {
-                    n.BackColor = SystemColors.Highlight;
-                    n.ForeColor = SystemColors.HighlightText;
-                    selectedNodes.Add(n);
-                }
-            }
-            foreach (TreeNode n in removedNodes) {
-                n.BackColor = treeViewMultiSelect.BackColor;
-                n.ForeColor = treeViewMultiSelect.ForeColor;
-                selectedNodes.Remove(n);
-            }
+        private void treeViewMultiSelect_BeforeCheck(object sender, TreeViewCancelEventArgs e) {
+            selectedNodes.Add(e.Node);
         }
 
         private void buttonTreeViewCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
+        private List<string> SelectedNodesToString() {
+            List<string> ret = new List<string>();
+            foreach (TreeNode x in selectedNodes) {
+                ret.Add(x.FullPath);
+            }
+            return ret;
+        }
+
         private void buttonTreeViewConfirm_Click(object sender, EventArgs e) {
-            
+            Backup singleton = new Backup(null);
+            singleton.AddToItemList(SelectedNodesToString());
         }
     }
 }
