@@ -93,6 +93,7 @@
             this.Controls.Add(this.buttonUpdateList);
             this.Controls.Add(this.directoryTree);
             this.Name = "SearchDirectory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchDirectory";
             this.ResumeLayout(false);
 
