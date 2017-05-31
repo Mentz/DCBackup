@@ -15,12 +15,12 @@ namespace BackupTool.SettingsApp
     {
         public List<string> itemsMarcados;
        
-        public SearchDirectory(List<string> lis)
+        public SearchDirectory()
         {
-            itemsMarcados = lis;
             InitializeComponent();
-           
-            
+
+            itemsMarcados = new List<string>();
+
             TreeNode noAcessoRapido = new TreeNode();
             noAcessoRapido.Text = "Acesso rápido";
             noAcessoRapido.Tag = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -37,7 +37,7 @@ namespace BackupTool.SettingsApp
                         no.Nodes.Add(null, "...", 0, 0);
                     }
                     noAcessoRapido.Nodes.Add(no);
-                } catch(Exception e) {
+                } catch(Exception ex) {
                     //
                 }
                 if (itemsMarcados != null) {
@@ -81,13 +81,19 @@ namespace BackupTool.SettingsApp
                     node.Checked = false;
                 }
 
-                if (itemsMarcados != null) {
-                    foreach (string a in itemsMarcados)
-                        if (a == node.Tag.ToString())
-                            node.Checked = true;
-                    directoryTree.Nodes.Add(node);
-                }
+                foreach (string a in itemsMarcados)
+                    if (a == node.Tag.ToString())
+                        node.Checked = true;
+                directoryTree.Nodes.Add(node);
             }
+        }
+
+        public void SetSelectedItems(List<string> list) {
+            itemsMarcados.AddRange(list);
+        }
+
+        public List<string> GetSelectedItems() {
+            return itemsMarcados;
         }
 
         private void directoryTree_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -170,15 +176,13 @@ namespace BackupTool.SettingsApp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            //Backup.backupItemList = null;
-            //Backup.backupItemList = itemsMarcados;
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+        private void buttonUpdateList_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

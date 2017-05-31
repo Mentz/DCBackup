@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchDirectory));
             this.directoryTree = new System.Windows.Forms.TreeView();
             this.IconList = new System.Windows.Forms.ImageList(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonUpdateList = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // directoryTree
@@ -62,33 +62,33 @@
             this.IconList.Images.SetKeyName(4, "nao.ico");
             this.IconList.Images.SetKeyName(5, "user1.ico");
             // 
-            // button1
+            // buttonUpdateList
             // 
-            this.button1.Location = new System.Drawing.Point(207, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Atualizar lista";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonUpdateList.Location = new System.Drawing.Point(289, 414);
+            this.buttonUpdateList.Name = "buttonUpdateList";
+            this.buttonUpdateList.Size = new System.Drawing.Size(91, 23);
+            this.buttonUpdateList.TabIndex = 1;
+            this.buttonUpdateList.Text = "Atualizar lista";
+            this.buttonUpdateList.UseVisualStyleBackColor = true;
+            this.buttonUpdateList.Click += new System.EventHandler(this.buttonUpdateList_Click);
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.Location = new System.Drawing.Point(304, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCancel.Location = new System.Drawing.Point(210, 414);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.Text = "Cancelar";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // SearchDirectory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 448);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonUpdateList);
             this.Controls.Add(this.directoryTree);
             this.Name = "SearchDirectory";
             this.Text = "SearchDirectory";
@@ -99,8 +99,8 @@
         #endregion
 
         private System.Windows.Forms.TreeView directoryTree;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonUpdateList;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ImageList IconList;
     }
 }

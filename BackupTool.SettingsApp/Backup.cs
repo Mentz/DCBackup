@@ -32,7 +32,7 @@ namespace BackupTool.SettingsApp {
 
         #region GlobalVariables
 
-        List<string> backupItemList;
+        private List<string> backupItemList;
 
         #endregion
 
@@ -41,6 +41,10 @@ namespace BackupTool.SettingsApp {
                 backupItemList.Add(t);
             }
             UpdateItemList();
+        }
+
+        public List<string> GetSelectedItemList() {
+            return backupItemList;
         }
 
         private void UpdateItemList() {
@@ -72,40 +76,30 @@ namespace BackupTool.SettingsApp {
             }
             else if (radioButtonFolders.Checked) {
 
-                // Novo método desenvolvido pelo Leonardo. Não funciona muito bem ainda
-                /*
+                // Novo método desenvolvido pelo Leonardo. (Não) funciona muito bem ainda
+                SearchDirectory newTreeSelect = new SearchDirectory();
 
-                SearchDirectory newTreeSelect = new SearchDirectory(null);
+                newTreeSelect.SetSelectedItems(GetSelectedItemList());
 
                 if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
                     List<string> things = new List<string>();
-                    foreach (string s in newTreeSelect.itemsMarcados) {
-                        things.Add(s.Replace("\\\\", "\\"));
+                    foreach (string s in newTreeSelect.GetSelectedItems()) {
+                        things.Add(s);
                     }
+                    ClearItemList();
                     AddToItemList(things);
                 }
 
                 newTreeSelect.Dispose();
 
-                */
-
-                // TreeView desenvolvido pelo Mentz, feioso.
-
-                TreeSelect treeSelect = new TreeSelect();
-
-                if (treeSelect.ShowDialog(this) == DialogResult.OK) {
-                    List<string> things = new List<string>();
-                    foreach (TreeNode s in treeSelect.selectedNodes) {
-                        things.Add(s.FullPath.Replace("\\\\", "\\"));
-                    }
-                    AddToItemList(things);
-                }
-
-                treeSelect.Dispose();
             }
             else {
                 MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo:\n\nRadio unselected.");
             }
+        }
+
+        private void ClearItemList() {
+            backupItemList.Clear();
         }
 
         private void buttonRemoveItem_Click(object sender, EventArgs e) {
