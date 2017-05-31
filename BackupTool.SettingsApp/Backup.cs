@@ -11,23 +11,54 @@ using System.Windows.Forms;
 namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
 
-        static List<string> backupItemList = new List<string>();
+        #region InitMethods
 
-        public Backup(List<string> itemList) {
+        public Backup() {
             InitializeComponent();
             this.MaximumSize = this.MinimumSize = this.Size;
-            backupItemList = itemList;
+            backupItemList = new List<string>();
         }
+
+        private void Backup_Load(object sender, EventArgs e) {
+            toolTips.SetToolTip(this.radioButtonFiles, "O backup irá guardar somente os\narquivos selecionados.\n\n" +
+                "Alterar essa opção irá reiniciar a lista de itens\ndo perfil de backup atual.");
+            toolTips.SetToolTip(this.radioButtonFolders, "O backup irá guardar somente os arquivos\nguardados diretamente na pasta selecionada.\n\n" +
+                "Alterar essa opção irá reiniciar a lista de itens\ndo perfil de backup atual.");
+        }
+
+        #endregion
+
+        #region GlobalVariables
+
+        List<string> backupItemList;
+
+        #endregion
+
+        public void AddToItemList(List<string> items) {
+            foreach (string t in items) {
+                backupItemList.Add(t);
+            }
+            UpdateItemList();
+        }
+
+        private void UpdateItemList() {
+            listBoxSelectedItems.DataSource = null;
+            listBoxSelectedItems.DataSource = backupItemList;
+        }
+
+        #region FormEventHandlers
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
-                listBoxSelectedItems.DataSource = null;
+                backupItemList.Clear();
+                UpdateItemList();
             }
         }
 
         private void radioButtonFiles_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFiles.Checked) {
-                listBoxSelectedItems.DataSource = null;
+                backupItemList.Clear();
+                UpdateItemList();
             }
         }
 
@@ -39,34 +70,50 @@ namespace BackupTool.SettingsApp {
             }
             else if (radioButtonFolders.Checked) {
                 TreeSelect treeSelect = new TreeSelect();
-                treeSelect.Show();
+
+                if (treeSelect.ShowDialog(this) == DialogResult.OK) {
+                    List<string> things = new List<string>();
+                    foreach (TreeNode s in treeSelect.selectedNodes) {
+                        MessageBox.Show(s.FullPath.Replace("\\\\", "\\"));
+                        things.Add(s.FullPath.Replace("\\\\", "\\"));
+                    }
+                    AddToItemList(things);
+                }
+
+                treeSelect.Dispose();
             }
             else {
-                MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo.");
+                MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo:\n\nRadio unselected.");
             }
         }
 
         private void buttonRemoveItem_Click(object sender, EventArgs e) {
             if (listBoxSelectedItems.SelectedIndex == -1) {
                 MessageBox.Show("Selecione um item para remover.");
-            } else {
+            }
+            else {
                 backupItemList.RemoveAt(listBoxSelectedItems.SelectedIndex);
                 UpdateItemList();
             }
         }
 
-        public void AddToItemList(List<string> items) {
-            foreach (string t in items) { 
-                MessageBox.Show(t);
-                //backupItemList.Add(t);
-            }
-            UpdateItemList();
+        private void buttonSaveProfile_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void UpdateItemList() {
-            MessageBox.Show("Lista de dados atualizada", "Olha eu aqui");
-            listBoxSelectedItems.DataSource = null;
-            listBoxSelectedItems.DataSource = backupItemList;
+        private void buttonCancel_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
+
+        private void textBoxProfileName_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !(char.IsLetterOrDigit(e.KeyChar) || char.Equals(e.KeyChar, '-') || char.Equals(e.KeyChar, '_'))) {
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+
     }
 }

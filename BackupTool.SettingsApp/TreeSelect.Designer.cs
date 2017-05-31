@@ -26,9 +26,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeSelect));
             this.treeViewMultiSelect = new System.Windows.Forms.TreeView();
+            this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.buttonTreeViewConfirm = new System.Windows.Forms.Button();
             this.buttonTreeViewCancel = new System.Windows.Forms.Button();
-            this.IconList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // treeViewMultiSelect
@@ -38,8 +38,14 @@
             this.treeViewMultiSelect.Name = "treeViewMultiSelect";
             this.treeViewMultiSelect.Size = new System.Drawing.Size(389, 384);
             this.treeViewMultiSelect.TabIndex = 0;
-            this.treeViewMultiSelect.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeCheck);
+            this.treeViewMultiSelect.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMultiSelect_AfterCheck);
             this.treeViewMultiSelect.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewMultiSelect_BeforeExpand);
+            // 
+            // IconList
+            // 
+            this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
+            this.IconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.IconList.Images.SetKeyName(0, "folder1.png");
             // 
             // buttonTreeViewConfirm
             // 
@@ -53,6 +59,7 @@
             // 
             // buttonTreeViewCancel
             // 
+            this.buttonTreeViewCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonTreeViewCancel.Location = new System.Drawing.Point(167, 394);
             this.buttonTreeViewCancel.Name = "buttonTreeViewCancel";
             this.buttonTreeViewCancel.Size = new System.Drawing.Size(75, 23);
@@ -61,21 +68,18 @@
             this.buttonTreeViewCancel.UseVisualStyleBackColor = true;
             this.buttonTreeViewCancel.Click += new System.EventHandler(this.buttonTreeViewCancel_Click);
             // 
-            // IconList
-            // 
-            this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
-            this.IconList.TransparentColor = System.Drawing.Color.Transparent;
-            this.IconList.Images.SetKeyName(0, "folder1.png");
-            // 
             // TreeSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonTreeViewCancel;
             this.ClientSize = new System.Drawing.Size(399, 422);
             this.Controls.Add(this.buttonTreeViewCancel);
             this.Controls.Add(this.buttonTreeViewConfirm);
             this.Controls.Add(this.treeViewMultiSelect);
             this.Name = "TreeSelect";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TreeSelect";
             this.Shown += new System.EventHandler(this.TreeSelect_Shown);
             this.ResumeLayout(false);
