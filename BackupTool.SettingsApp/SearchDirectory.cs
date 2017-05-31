@@ -19,10 +19,11 @@ namespace BackupTool.SettingsApp
         {
             InitializeComponent();
 
-            itemsMarcados = new List<string>();
+            directoryTree.
 
+            itemsMarcados = new List<string>();
             TreeNode noAcessoRapido = new TreeNode();
-            noAcessoRapido.Text = "Acesso rápido";
+            noAcessoRapido.Text = "Arquivos pessoais";
             noAcessoRapido.Tag = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             noAcessoRapido.SelectedImageIndex = 5; noAcessoRapido.ImageIndex = 5;
             string[] dirs = Directory.GetDirectories(noAcessoRapido.Tag.ToString());
@@ -40,10 +41,13 @@ namespace BackupTool.SettingsApp
                 } catch(Exception ex) {
                     //
                 }
+
                 if (itemsMarcados != null) {
                     foreach (string a in itemsMarcados) {
-                        if (a == no.Tag.ToString())
+                        if (a == no.Tag.ToString()) {
                             no.Checked = true;
+                            MessageBox.Show("aaa");
+                        }
                         if (a == noAcessoRapido.Tag.ToString())
                             noAcessoRapido.Checked = true;
                     }
@@ -138,11 +142,9 @@ namespace BackupTool.SettingsApp
         {
             if(e.Node.Checked == true) {
                 bool found = false;
-                foreach (string t in itemsMarcados)
-                {
-                    //MessageBox.Show(t + " " + e.Node.Tag.ToString());
-                    if (t == e.Node.Tag.ToString())
-                    {
+                foreach (string t in itemsMarcados) {
+                    MessageBox.Show(t + " " + e.Node.Tag.ToString());
+                    if (t == e.Node.Tag.ToString()) {
                         found = true;
                     }
                 }
@@ -157,12 +159,13 @@ namespace BackupTool.SettingsApp
                 }
             }
 
-            //if(e.Node.Checked == false) {
-            //TreeNode no = e.Node.Parent;
-            //no.Checked = false;
-            //}
-            //recursion(e.Node);
-
+            recursion(e.Node);
+            /*if(e.Node.Checked == false) {
+                TreeNode no = e.Node.Parent;
+            no.Checked = false;
+            }
+            recursion(e.Node);
+            */
             //MessageBox.Show(e.Node.ToString());
         }
 
