@@ -20,6 +20,8 @@ namespace BackupTool.SettingsApp {
         }
 
         private void Backup_Load(object sender, EventArgs e) {
+            toolTips.SetToolTip(this.textBoxProfileName, "O nome só poderá ter caracteres do alfabeto, números e\n" +
+                "os símbolos underline \"_\" e hífen \"-\".");
             toolTips.SetToolTip(this.radioButtonFiles, "O backup irá guardar somente os\narquivos selecionados.\n\n" +
                 "Alterar essa opção irá reiniciar a lista de itens\ndo perfil de backup atual.");
             toolTips.SetToolTip(this.radioButtonFolders, "O backup irá guardar somente os arquivos\nguardados diretamente na pasta selecionada.\n\n" +
@@ -74,7 +76,6 @@ namespace BackupTool.SettingsApp {
                 if (treeSelect.ShowDialog(this) == DialogResult.OK) {
                     List<string> things = new List<string>();
                     foreach (TreeNode s in treeSelect.selectedNodes) {
-                        MessageBox.Show(s.FullPath.Replace("\\\\", "\\"));
                         things.Add(s.FullPath.Replace("\\\\", "\\"));
                     }
                     AddToItemList(things);
