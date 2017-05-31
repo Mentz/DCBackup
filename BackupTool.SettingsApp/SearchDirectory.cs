@@ -21,6 +21,13 @@ namespace BackupTool.SettingsApp
             itemsMarcados = new List<string>();
         }
 
+        public void expandParent(TreeNode no) {
+            if(no.Parent != null) {
+                no.Parent.Expand();
+                expandParent(no.Parent);
+            }
+        }
+
         public void newTreeViewRoot(string name, string diretorio, string imageIndex) {
             TreeNode no = new TreeNode();
             no.Text = name;
@@ -47,10 +54,16 @@ namespace BackupTool.SettingsApp
                     }
 
                     foreach (string str in itemsMarcados) {
-                        if (str == tmp.Tag.ToString())
+                        if (str == tmp.Tag.ToString()) {
                             tmp.Checked = true;
-                        if (str == no.Tag.ToString())
+                            tmp.Expand();
+                            expandParent(tmp);
+                        }
+                        if (str == no.Tag.ToString()) {
                             no.Checked = true;
+                            no.Expand();
+                            expandParent(no);
+                        }
                     }
                 }
             }
@@ -58,11 +71,11 @@ namespace BackupTool.SettingsApp
         }
 
         public void setTreeViewRoots() {
-            newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "estrela");
-            foreach (string t in Environment.GetLogicalDrives()) {
-                DriveInfo d = new DriveInfo(t);
-                MessageBox.Show(d.DriveType.ToString());
-                newTreeViewRoot(t, t, d.DriveType.ToString());
+            newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Personal");
+            foreach (string dir in Environment.GetLogicalDrives()) {
+                DriveInfo drive = new DriveInfo(dir);
+               
+                newTreeViewRoot(dir, dir, drive.DriveType.ToString());
             }
         }
 
@@ -102,8 +115,11 @@ namespace BackupTool.SettingsApp
                             //node.Checked = e.Node.Checked;
                             if (diretorioAutorizado == true) {
                                 foreach (string a in itemsMarcados)
-                                    if (a == node.Tag.ToString())
+                                    if (a == node.Tag.ToString()) {
                                         node.Checked = true;
+                                        node.Expand();
+                                        expandParent(node);
+                                    }
                                 e.Node.Nodes.Add(node);
                             }
                         }
