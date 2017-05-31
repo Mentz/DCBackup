@@ -171,11 +171,6 @@ namespace BackupTool.SettingsApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void buttonUpdateList_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.OK;
             this.Close();
