@@ -55,12 +55,14 @@
             // 
             this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
             this.IconList.TransparentColor = System.Drawing.Color.Transparent;
-            this.IconList.Images.SetKeyName(0, "pasta1.ico");
+            this.IconList.Images.SetKeyName(0, "Root");
             this.IconList.Images.SetKeyName(1, "Fixed");
             this.IconList.Images.SetKeyName(2, "CDRom");
-            this.IconList.Images.SetKeyName(3, "rede.ico");
-            this.IconList.Images.SetKeyName(4, "nao.ico");
+            this.IconList.Images.SetKeyName(3, "Network");
+            this.IconList.Images.SetKeyName(4, "UnkownFolder");
             this.IconList.Images.SetKeyName(5, "estrela");
+            this.IconList.Images.SetKeyName(6, "Personal");
+            this.IconList.Images.SetKeyName(7, "Removable");
             // 
             // buttonUpdateList
             // 
