@@ -65,7 +65,7 @@ namespace DC_Backup_Tool___Settings {
             MessageBox.Show(profiles.ToString());
             List<backupProfile> backupProfiles = new List<backupProfile>();
             foreach (string profile in profiles) {
-                backupProfiles.Add(new backupProfile(profile, configParameters[profile]["type"], configParameters[profile]["triggertime"]));
+                //backupProfiles.Add(new backupProfile(profile, configParameters[profile]["type"], configParameters[profile]["triggertime"]));
             }
 
             MessageBox.Show(backupProfiles.ToString());

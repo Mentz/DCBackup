@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
+        public static List<string> backupItemList;
         public Backup(List<string> itemList) {
             InitializeComponent();
             this.MaximumSize = this.MinimumSize = this.Size;
-            backupItemList = itemList;
+            backupItemList = new List<string>();
         }
-
-        List<string> backupItemList = new List<string>();
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
@@ -38,12 +37,15 @@ namespace BackupTool.SettingsApp {
                 listBoxSelectedItems.DataSource = fileList;
             }
             else if (radioButtonFolders.Checked) {
-                TreeSelect treeSelect = new TreeSelect();
-                treeSelect.Show();
+                //TreeSelect treeSelect = new TreeSelect();
+                //treeSelect.Show();
+
+                SearchDirectory sd = new SearchDirectory(backupItemList);
+                sd.Show();
                 //FolderDialog.ShowDialog();
             }
             else {
-                MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo.");
+                MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo. @.@ quando isso acontecer espero não estar mais na terra, pq o negocio vai estar loco");
             }
         }
 
@@ -57,12 +59,15 @@ namespace BackupTool.SettingsApp {
                 itens.RemoveAt(listBoxSelectedItems.SelectedIndex);
                 listBoxSelectedItems.DataSource = null;
                 listBoxSelectedItems.DataSource = itens;
+                backupItemList = null;
+                backupItemList = itens;
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            listBoxSelectedItems.DataSource = null;
+            listBoxSelectedItems.DataSource = backupItemList;
         }
     }
 }

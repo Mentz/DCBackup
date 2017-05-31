@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelBackupType = new System.Windows.Forms.Label();
             this.radioButtonFolders = new System.Windows.Forms.RadioButton();
@@ -54,6 +55,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.buttonRemoveItem);
             this.tabPage1.Controls.Add(this.listBoxSelectedItems);
@@ -65,6 +67,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configurações";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(150, 170);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -192,5 +204,6 @@
         private System.Windows.Forms.Label labelBackupType;
         private System.Windows.Forms.RadioButton radioButtonFolders;
         private System.Windows.Forms.RadioButton radioButtonFiles;
+        private System.Windows.Forms.Button button1;
     }
 }
