@@ -185,5 +185,10 @@ namespace BackupTool.SettingsApp
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }
