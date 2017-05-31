@@ -18,75 +18,51 @@ namespace BackupTool.SettingsApp
         public SearchDirectory()
         {
             InitializeComponent();
-
             itemsMarcados = new List<string>();
-            TreeNode noAcessoRapido = new TreeNode();
-            noAcessoRapido.Text = "Arquivos pessoais";
-            noAcessoRapido.Tag = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            noAcessoRapido.SelectedImageIndex = 5; noAcessoRapido.ImageIndex = 5;
-            string[] dirs = Directory.GetDirectories(noAcessoRapido.Tag.ToString());
-            foreach(string dAtual in dirs) {
-                DirectoryInfo dInfo = new DirectoryInfo(dAtual);
-                TreeNode no = new TreeNode();
-                no.Text = dInfo.Name;
-                no.Tag = dInfo;
-                no.ImageIndex = 0;
-                try {
-                    if (dInfo.GetDirectories().Count() > 0) {
-                        no.Nodes.Add(null, "...", 0, 0);
-                    }
-                    noAcessoRapido.Nodes.Add(no);
-                } catch(Exception ex) {
-                    //
-                }
+        }
 
-                if (itemsMarcados != null) {
-                    foreach (string a in itemsMarcados) {
-                        if (a == no.Tag.ToString()) {
+        public void newTreeViewRoot(string name, string diretorio, string imageIndex) {
+            TreeNode no = new TreeNode();
+            no.Text = name;
+            no.Tag = diretorio;
+            no.SelectedImageKey = imageIndex;
+            no.ImageKey = imageIndex;
+            DriveInfo d = new DriveInfo(diretorio);
+
+            if (d.IsReady == true) { 
+                string[] dirs = Directory.GetDirectories(no.Tag.ToString());
+                foreach (string dAtual in dirs) {
+                    DirectoryInfo dInfo = new DirectoryInfo(dAtual);
+                    TreeNode tmp = new TreeNode();
+                    tmp.Text = dInfo.Name;
+                    tmp.Tag = dInfo;
+                    tmp.ImageIndex = 0;
+
+                    try {
+                        if (dInfo.GetDirectories().Count() > 0)
+                            tmp.Nodes.Add(null, "...", 0, 0);
+                        no.Nodes.Add(tmp);
+                    } catch (Exception ex) {
+                        //
+                    }
+
+                    foreach (string str in itemsMarcados) {
+                        if (str == tmp.Tag.ToString())
+                            tmp.Checked = true;
+                        if (str == no.Tag.ToString())
                             no.Checked = true;
-                            MessageBox.Show("aaa");
-                        }
-                        if (a == noAcessoRapido.Tag.ToString())
-                            noAcessoRapido.Checked = true;
                     }
                 }
             }
-            directoryTree.Nodes.Add(noAcessoRapido);
+            directoryTree.Nodes.Add(no);
+        }
 
-            string[] drives = Environment.GetLogicalDrives();
-            foreach (string drive in drives){
-                DriveInfo d = new DriveInfo(drive);
-                int driveImage;
-
-                switch (d.DriveType) {
-                    case DriveType.CDRom:
-                        driveImage = 2;
-                        break;
-
-                    case DriveType.Fixed:
-                        driveImage = 1;
-                        break;
-
-                    case DriveType.Network:
-                        driveImage = 3;
-                        break;
-                    
-                    default:
-                        driveImage = 1;
-                        break;
-                }
-                TreeNode node = new TreeNode(drive, driveImage, driveImage);
-
-                node.Tag = drive;
-                if (d.IsReady == true) {
-                    node.Nodes.Add("...");
-                    node.Checked = false;
-                }
-
-                foreach (string a in itemsMarcados)
-                    if (a == node.Tag.ToString())
-                        node.Checked = true;
-                directoryTree.Nodes.Add(node);
+        public void setTreeViewRoots() {
+            newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "estrela");
+            foreach (string t in Environment.GetLogicalDrives()) {
+                DriveInfo d = new DriveInfo(t);
+                MessageBox.Show(d.DriveType.ToString());
+                newTreeViewRoot(t, t, d.DriveType.ToString());
             }
         }
 
@@ -138,26 +114,28 @@ namespace BackupTool.SettingsApp
 
         private void directoryTree_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            if(e.Node.Checked == true) {
-                bool found = false;
-                foreach (string t in itemsMarcados) {
-                    MessageBox.Show(t + " " + e.Node.Tag.ToString());
-                    if (t == e.Node.Tag.ToString()) {
-                        found = true;
+            if (e.Node.Tag != null) {
+                if (e.Node.Checked == true) {
+                    bool found = false;
+                    foreach (string t in itemsMarcados) {
+                        //MessageBox.Show(t + " " + e.Node.Tag.ToString());
+                        if (t == e.Node.Tag.ToString()) {
+                            found = true;
+                        }
+                    }
+                    if (found == false)
+                        itemsMarcados.Add(e.Node.Tag.ToString());
+                }
+
+
+                if (e.Node.Checked == false) {
+                    for (int i = 0; i < itemsMarcados.Count; i++) {
+                        if (itemsMarcados[i] == e.Node.Tag.ToString())
+                            itemsMarcados.RemoveAt(i);
                     }
                 }
-                if (found == false)
-                    itemsMarcados.Add(e.Node.Tag.ToString());
             }
 
-            if(e.Node.Checked == false) {
-                for(int i = 0; i < itemsMarcados.Count; i++) {
-                    if (itemsMarcados[i] == e.Node.Tag.ToString())
-                        itemsMarcados.RemoveAt(i);
-                }
-            }
-
-            recursion(e.Node);
             /*if(e.Node.Checked == false) {
                 TreeNode no = e.Node.Parent;
             no.Checked = false;

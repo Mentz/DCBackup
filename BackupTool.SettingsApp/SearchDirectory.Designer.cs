@@ -56,11 +56,11 @@
             this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
             this.IconList.TransparentColor = System.Drawing.Color.Transparent;
             this.IconList.Images.SetKeyName(0, "pasta1.ico");
-            this.IconList.Images.SetKeyName(1, "drive.ico");
-            this.IconList.Images.SetKeyName(2, "1.ico");
+            this.IconList.Images.SetKeyName(1, "Fixed");
+            this.IconList.Images.SetKeyName(2, "CDRom");
             this.IconList.Images.SetKeyName(3, "rede.ico");
             this.IconList.Images.SetKeyName(4, "nao.ico");
-            this.IconList.Images.SetKeyName(5, "user1.ico");
+            this.IconList.Images.SetKeyName(5, "estrela");
             // 
             // buttonUpdateList
             // 

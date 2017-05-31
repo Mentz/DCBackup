@@ -78,8 +78,8 @@ namespace BackupTool.SettingsApp {
 
                 // Novo método desenvolvido pelo Leonardo. (Não) funciona muito bem ainda
                 SearchDirectory newTreeSelect = new SearchDirectory();
-
                 newTreeSelect.SetSelectedItems(GetSelectedItemList());
+                newTreeSelect.setTreeViewRoots();
 
                 if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
                     List<string> things = new List<string>();
