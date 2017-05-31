@@ -40,11 +40,13 @@ namespace BackupTool.SettingsApp
                 } catch(Exception e) {
                     //
                 }
-                foreach (string a in itemsMarcados) {
-                    if (a == no.Tag.ToString())
-                        no.Checked = true;
-                    if (a == noAcessoRapido.Tag.ToString())
-                        noAcessoRapido.Checked = true;
+                if (itemsMarcados != null) {
+                    foreach (string a in itemsMarcados) {
+                        if (a == no.Tag.ToString())
+                            no.Checked = true;
+                        if (a == noAcessoRapido.Tag.ToString())
+                            noAcessoRapido.Checked = true;
+                    }
                 }
             }
             directoryTree.Nodes.Add(noAcessoRapido);
@@ -79,10 +81,12 @@ namespace BackupTool.SettingsApp
                     node.Checked = false;
                 }
 
-                foreach (string a in itemsMarcados)
-                    if (a == node.Tag.ToString())
-                        node.Checked = true;
-                directoryTree.Nodes.Add(node);
+                if (itemsMarcados != null) {
+                    foreach (string a in itemsMarcados)
+                        if (a == node.Tag.ToString())
+                            node.Checked = true;
+                    directoryTree.Nodes.Add(node);
+                }
             }
         }
 
@@ -168,8 +172,8 @@ namespace BackupTool.SettingsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Backup.backupItemList = null;
-            Backup.backupItemList = itemsMarcados;
+            //Backup.backupItemList = null;
+            //Backup.backupItemList = itemsMarcados;
             this.Close();
         }
 

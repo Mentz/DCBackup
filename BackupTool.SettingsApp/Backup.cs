@@ -71,6 +71,26 @@ namespace BackupTool.SettingsApp {
                 UpdateItemList();
             }
             else if (radioButtonFolders.Checked) {
+
+                // Novo método desenvolvido pelo Leonardo. Não funciona muito bem ainda
+                /*
+
+                SearchDirectory newTreeSelect = new SearchDirectory(null);
+
+                if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
+                    List<string> things = new List<string>();
+                    foreach (string s in newTreeSelect.itemsMarcados) {
+                        things.Add(s.Replace("\\\\", "\\"));
+                    }
+                    AddToItemList(things);
+                }
+
+                newTreeSelect.Dispose();
+
+                */
+
+                // TreeView desenvolvido pelo Mentz, feioso.
+
                 TreeSelect treeSelect = new TreeSelect();
 
                 if (treeSelect.ShowDialog(this) == DialogResult.OK) {
