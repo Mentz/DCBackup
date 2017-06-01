@@ -14,11 +14,13 @@ namespace BackupTool.SettingsApp
     public partial class SearchDirectory : Form
     {
         public List<string> itemsMarcados;
-       
+        public List< List<string> > itemsToExpand;
+
         public SearchDirectory()
         {
             InitializeComponent();
             itemsMarcados = new List<string>();
+            itemsToExpand = new List< List<string> > (20);
         }
 
         public void expandParent(TreeNode no) {
@@ -46,28 +48,37 @@ namespace BackupTool.SettingsApp
                     tmp.ImageIndex = 0;
 
                     try {
-                        if (dInfo.GetDirectories().Count() > 0)
-                            tmp.Nodes.Add(null, "...", 0, 0);
                         no.Nodes.Add(tmp);
+                        if (dInfo.GetDirectories().Count() > 0) {
+                            tmp.Nodes.Add(null, "...", 0, 0);
+                            checkNodeToExpand(tmp);
+                        }
                     } catch (Exception ex) {
                         //
                     }
 
                     foreach (string str in itemsMarcados) {
-                        if (str == tmp.Tag.ToString()) {
+                        if (str == tmp.Tag.ToString())
                             tmp.Checked = true;
-                            tmp.Expand();
-                            expandParent(tmp);
-                        }
-                        if (str == no.Tag.ToString()) {
+                        if (str == no.Tag.ToString())
                             no.Checked = true;
-                            no.Expand();
-                            expandParent(no);
-                        }
                     }
                 }
+                checkNodeToExpand(no);
             }
             directoryTree.Nodes.Add(no);
+        }
+
+        public void checkNodeToExpand(TreeNode no) {
+            int depth = no.Level;
+            //MessageBox.Show(depth.ToString());
+            for(int i = 0; i < itemsToExpand.Count; i++) {
+                //MessageBox.Show(itemsToExpand[i][depth] + " " + no.Text);
+                if (itemsToExpand[i][depth] == no.Text) {
+                    //MessageBox.Show("lul");
+                    no.Expand();
+                }
+            }
         }
 
         public void setTreeViewRoots() {
@@ -81,14 +92,23 @@ namespace BackupTool.SettingsApp
 
         public void SetSelectedItems(List<string> list) {
             itemsMarcados.AddRange(list);
+
+            foreach (string str in itemsMarcados) {
+                List<string> aux = new List<string>();
+                aux.AddRange(str.Split('\\'));
+                itemsToExpand.Add(aux);
+            }
+
+            for(int i = 0; i < itemsToExpand.Count; i++) {
+                itemsToExpand[i][0] += '\\'; 
+            }
         }
 
         public List<string> GetSelectedItems() {
             return itemsMarcados;
         }
 
-        private void directoryTree_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-        {
+        private void directoryTree_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
             if (e.Node.Nodes.Count > 0) {
                 if (e.Node.Nodes[0].Text == "..." && e.Node.Nodes[0].Tag == null) {
                     e.Node.Nodes.Clear();
@@ -114,6 +134,8 @@ namespace BackupTool.SettingsApp
                         finally {
                             //node.Checked = e.Node.Checked;
                             if (diretorioAutorizado == true) {
+                                //checkNodeToExpand(node);
+                                //checkNodeToExpand(e.Node);
                                 foreach (string a in itemsMarcados)
                                     if (a == node.Tag.ToString()) {
                                         node.Checked = true;
@@ -151,14 +173,6 @@ namespace BackupTool.SettingsApp
                     }
                 }
             }
-
-            /*if(e.Node.Checked == false) {
-                TreeNode no = e.Node.Parent;
-            no.Checked = false;
-            }
-            recursion(e.Node);
-            */
-            //MessageBox.Show(e.Node.ToString());
         }
 
         public void recursion(TreeNode no) {
