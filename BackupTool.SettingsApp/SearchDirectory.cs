@@ -40,6 +40,7 @@ namespace BackupTool.SettingsApp
 
             if (d.IsReady == true) { 
                 string[] dirs = Directory.GetDirectories(no.Tag.ToString());
+                checkNodeToExpand(no);
                 foreach (string dAtual in dirs) {
                     DirectoryInfo dInfo = new DirectoryInfo(dAtual);
                     TreeNode tmp = new TreeNode();
@@ -51,8 +52,8 @@ namespace BackupTool.SettingsApp
                         no.Nodes.Add(tmp);
                         if (dInfo.GetDirectories().Count() > 0) {
                             tmp.Nodes.Add(null, "...", 0, 0);
-                            checkNodeToExpand(tmp);
                         }
+                        checkNodeToExpand(tmp);
                     } catch (Exception ex) {
                         //
                     }
@@ -64,25 +65,23 @@ namespace BackupTool.SettingsApp
                             no.Checked = true;
                     }
                 }
-                checkNodeToExpand(no);
             }
             directoryTree.Nodes.Add(no);
         }
 
         public void checkNodeToExpand(TreeNode no) {
             int depth = no.Level;
-            //MessageBox.Show(depth.ToString());
-            for(int i = 0; i < itemsToExpand.Count; i++) {
-                //MessageBox.Show(itemsToExpand[i][depth] + " " + no.Text);
-                if (itemsToExpand[i][depth] == no.Text) {
-                    //MessageBox.Show("lul");
-                    no.Expand();
-                }
+
+            foreach(List<string> list in itemsToExpand) {
+                ///MessageBox.Show(depth.ToString() + " " + list[depth] + " " + no.Text);
+                if(depth < list.Count())
+                    if (list[depth] == no.Text)
+                        no.Expand();
             }
         }
 
         public void setTreeViewRoots() {
-            newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Personal");
+            //newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Personal");
             foreach (string dir in Environment.GetLogicalDrives()) {
                 DriveInfo drive = new DriveInfo(dir);
                
@@ -134,15 +133,15 @@ namespace BackupTool.SettingsApp
                         finally {
                             //node.Checked = e.Node.Checked;
                             if (diretorioAutorizado == true) {
-                                //checkNodeToExpand(node);
                                 //checkNodeToExpand(e.Node);
                                 foreach (string a in itemsMarcados)
                                     if (a == node.Tag.ToString()) {
                                         node.Checked = true;
-                                        node.Expand();
-                                        expandParent(node);
+                                        //node.Expand();
                                     }
                                 e.Node.Nodes.Add(node);
+                                checkNodeToExpand(e.Node);
+                                checkNodeToExpand(node);
                             }
                         }
                     }
