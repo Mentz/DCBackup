@@ -71,7 +71,7 @@ namespace BackupTool.SettingsApp {
         private void buttonAddItem_Click(object sender, EventArgs e) {
             if (radioButtonFiles.Checked) {
                 FileDialog.ShowDialog();
-                backupItemList.AddRange(FileDialog.FileNames);
+                AddToItemList(FileDialog.FileNames.ToList<string>());
                 UpdateItemList();
             }
             else if (radioButtonFolders.Checked) {
