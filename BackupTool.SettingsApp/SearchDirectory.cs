@@ -72,11 +72,13 @@ namespace BackupTool.SettingsApp
         public void checkNodeToExpand(TreeNode no) {
             int depth = no.Level;
 
+            int i = 0;
             foreach(List<string> list in itemsToExpand) {
                 ///MessageBox.Show(depth.ToString() + " " + list[depth] + " " + no.Text);
-                if(depth < list.Count())
+                if(depth < list.Count() - 1)
                     if (list[depth] == no.Text)
                         no.Expand();
+                i++;
             }
         }
 
