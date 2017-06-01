@@ -56,12 +56,12 @@ namespace BackupTool.SettingsApp
                     foreach (string str in itemsMarcados) {
                         if (str == tmp.Tag.ToString()) {
                             tmp.Checked = true;
-                            tmp.Expand();
+                            // tmp.Expand();            // Não requerido
                             expandParent(tmp);
                         }
                         if (str == no.Tag.ToString()) {
                             no.Checked = true;
-                            no.Expand();
+                            // no.Expand();             // Não requerido.
                             expandParent(no);
                         }
                     }
