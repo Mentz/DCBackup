@@ -80,7 +80,6 @@ namespace BackupTool.SettingsApp {
                 SearchDirectory newTreeSelect = new SearchDirectory();
                 newTreeSelect.SetSelectedItems(GetSelectedItemList());
                 newTreeSelect.setTreeViewRoots();
-
                 if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
                     List<string> things = new List<string>();
                     foreach (string s in newTreeSelect.GetSelectedItems()) {

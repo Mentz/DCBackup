@@ -81,7 +81,6 @@ namespace BackupTool.SettingsApp
         }
 
         public void setTreeViewRoots() {
-            //newTreeViewRoot("Arquivos pessoais", Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Personal");
             foreach (string dir in Environment.GetLogicalDrives()) {
                 DriveInfo drive = new DriveInfo(dir);
                

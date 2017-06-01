@@ -92,7 +92,9 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonUpdateList);
             this.Controls.Add(this.directoryTree);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SearchDirectory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchDirectory";
             this.ResumeLayout(false);
 
