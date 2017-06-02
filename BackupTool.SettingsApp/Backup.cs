@@ -129,8 +129,6 @@ namespace BackupTool.SettingsApp {
             }
         }
 
-        #endregion
-
         private void buttonAddFile_Click(object sender, EventArgs e) {
             FileDialog.ShowDialog();
             AddToItemList(FileDialog.FileNames.ToList<string>());
@@ -149,5 +147,7 @@ namespace BackupTool.SettingsApp {
                     Process.Start(listBoxSelectedItems.SelectedItem.ToString());
             }
         }
+
+        #endregion
     }
 }
