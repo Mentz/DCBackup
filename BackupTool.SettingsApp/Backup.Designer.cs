@@ -27,8 +27,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Backup));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConfig = new System.Windows.Forms.TabPage();
-            this.buttonSaveProfile = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonAddFile = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelBackupType = new System.Windows.Forms.Label();
             this.labelProfileName = new System.Windows.Forms.Label();
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
@@ -43,8 +44,10 @@
             this.FolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonSaveProfile = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,13 +60,15 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(734, 345);
+            this.tabControl1.Size = new System.Drawing.Size(734, 367);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageConfig
             // 
+            this.tabPageConfig.Controls.Add(this.label1);
             this.tabPageConfig.Controls.Add(this.buttonAddFile);
+            this.tabPageConfig.Controls.Add(this.pictureBox2);
             this.tabPageConfig.Controls.Add(this.labelBackupType);
             this.tabPageConfig.Controls.Add(this.labelProfileName);
             this.tabPageConfig.Controls.Add(this.textBoxProfileName);
@@ -74,21 +79,19 @@
             this.tabPageConfig.Location = new System.Drawing.Point(4, 22);
             this.tabPageConfig.Name = "tabPageConfig";
             this.tabPageConfig.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConfig.Size = new System.Drawing.Size(726, 319);
+            this.tabPageConfig.Size = new System.Drawing.Size(726, 341);
             this.tabPageConfig.TabIndex = 0;
             this.tabPageConfig.Text = "Configurações";
             this.tabPageConfig.UseVisualStyleBackColor = true;
             // 
-            // buttonSaveProfile
+            // label1
             // 
-            this.buttonSaveProfile.Image = global::BackupTool.SettingsApp.Properties.Resources.Salvar_e_fechar_40;
-            this.buttonSaveProfile.Location = new System.Drawing.Point(671, 352);
-            this.buttonSaveProfile.Name = "buttonSaveProfile";
-            this.buttonSaveProfile.Size = new System.Drawing.Size(64, 67);
-            this.buttonSaveProfile.TabIndex = 1;
-            this.toolTips.SetToolTip(this.buttonSaveProfile, "Salvar configuração e sair");
-            this.buttonSaveProfile.UseVisualStyleBackColor = true;
-            this.buttonSaveProfile.Click += new System.EventHandler(this.buttonSaveProfile_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 321);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(270, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Dois cliques em item selecionado abrirá local do arquivo";
             // 
             // buttonAddFile
             // 
@@ -101,6 +104,15 @@
             this.buttonAddFile.UseCompatibleTextRendering = true;
             this.buttonAddFile.UseVisualStyleBackColor = false;
             this.buttonAddFile.Click += new System.EventHandler(this.buttonAddFile_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Light_On_16;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 318);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(21, 19);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // labelBackupType
             // 
@@ -222,7 +234,7 @@
             this.tabPageAgenda.Location = new System.Drawing.Point(4, 22);
             this.tabPageAgenda.Name = "tabPageAgenda";
             this.tabPageAgenda.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAgenda.Size = new System.Drawing.Size(633, 347);
+            this.tabPageAgenda.Size = new System.Drawing.Size(726, 351);
             this.tabPageAgenda.TabIndex = 1;
             this.tabPageAgenda.Text = "Agendamento";
             this.tabPageAgenda.UseVisualStyleBackColor = true;
@@ -242,11 +254,22 @@
             this.toolTips.IsBalloon = true;
             this.toolTips.ReshowDelay = 100;
             // 
+            // buttonSaveProfile
+            // 
+            this.buttonSaveProfile.Image = global::BackupTool.SettingsApp.Properties.Resources.Salvar_e_fechar_40;
+            this.buttonSaveProfile.Location = new System.Drawing.Point(671, 374);
+            this.buttonSaveProfile.Name = "buttonSaveProfile";
+            this.buttonSaveProfile.Size = new System.Drawing.Size(64, 67);
+            this.buttonSaveProfile.TabIndex = 1;
+            this.toolTips.SetToolTip(this.buttonSaveProfile, "Salvar configuração e sair");
+            this.buttonSaveProfile.UseVisualStyleBackColor = true;
+            this.buttonSaveProfile.Click += new System.EventHandler(this.buttonSaveProfile_Click);
+            // 
             // Backup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 429);
+            this.ClientSize = new System.Drawing.Size(742, 446);
             this.Controls.Add(this.buttonSaveProfile);
             this.Controls.Add(this.tabControl1);
             this.MaximizeBox = false;
@@ -258,6 +281,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageConfig.ResumeLayout(false);
             this.tabPageConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -285,5 +309,7 @@
         private System.Windows.Forms.TextBox textBoxProfileName;
         private System.Windows.Forms.Button buttonAddFile;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -93,6 +93,46 @@ namespace BackupTool.SettingsApp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Light_On_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Light On-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Light_On_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Light On-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Light_On_301 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Light On-301", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Light_On_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Light On-50 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Salvar_e_fechar_40 {
             get {
                 object obj = ResourceManager.GetObject("Salvar e fechar-40", resourceCulture);
