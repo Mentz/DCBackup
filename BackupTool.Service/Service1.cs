@@ -14,7 +14,7 @@ namespace BackupTool.Service {
             InitializeComponent();
         }
 
-        private System.Timers.Timer 
+        private System.Timers.Timer timers;
 
         protected override void OnStart(string[] args) {
         }
