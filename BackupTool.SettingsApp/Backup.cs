@@ -71,16 +71,15 @@ namespace BackupTool.SettingsApp {
         private void buttonAddItem_Click(object sender, EventArgs e) {
             if (radioButtonFiles.Checked) {
                 FileDialog.ShowDialog();
-                backupItemList.AddRange(FileDialog.FileNames);
+                AddToItemList(FileDialog.FileNames.ToList<string>());
                 UpdateItemList();
             }
             else if (radioButtonFolders.Checked) {
 
                 // Novo método desenvolvido pelo Leonardo. (Não) funciona muito bem ainda
                 SearchDirectory newTreeSelect = new SearchDirectory();
-
                 newTreeSelect.SetSelectedItems(GetSelectedItemList());
-
+                newTreeSelect.setTreeViewRoots();
                 if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
                     List<string> things = new List<string>();
                     foreach (string s in newTreeSelect.GetSelectedItems()) {
