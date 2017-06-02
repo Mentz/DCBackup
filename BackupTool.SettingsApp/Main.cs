@@ -119,6 +119,14 @@ namespace DC_Backup_Tool___Settings {
         }
 
         #endregion
+
+        private void buttonEditProfile_Click(object sender, EventArgs e) {
+
+        }
+
+        private void Main_Load(object sender, EventArgs e) {
+
+        }
     }
 
     class backupProfile {

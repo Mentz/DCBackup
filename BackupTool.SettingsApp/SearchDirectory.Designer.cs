@@ -42,6 +42,7 @@
             this.directoryTree.HideSelection = false;
             this.directoryTree.ImageIndex = 2;
             this.directoryTree.ImageList = this.IconList;
+            this.directoryTree.ImeMode = System.Windows.Forms.ImeMode.On;
             this.directoryTree.ItemHeight = 20;
             this.directoryTree.Location = new System.Drawing.Point(12, 12);
             this.directoryTree.Name = "directoryTree";
@@ -49,6 +50,7 @@
             this.directoryTree.Size = new System.Drawing.Size(367, 397);
             this.directoryTree.TabIndex = 0;
             this.directoryTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.directoryTree_AfterCheck);
+            this.directoryTree.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.directoryTree_BeforeCollapse);
             this.directoryTree.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.directoryTree_BeforeExpand);
             // 
             // IconList
@@ -56,13 +58,14 @@
             this.IconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconList.ImageStream")));
             this.IconList.TransparentColor = System.Drawing.Color.Transparent;
             this.IconList.Images.SetKeyName(0, "Root");
-            this.IconList.Images.SetKeyName(1, "Fixed");
-            this.IconList.Images.SetKeyName(2, "CDRom");
-            this.IconList.Images.SetKeyName(3, "Network");
-            this.IconList.Images.SetKeyName(4, "UnkownFolder");
-            this.IconList.Images.SetKeyName(5, "estrela");
-            this.IconList.Images.SetKeyName(6, "Personal");
-            this.IconList.Images.SetKeyName(7, "Removable");
+            this.IconList.Images.SetKeyName(1, "OpenFolder");
+            this.IconList.Images.SetKeyName(2, "Fixed");
+            this.IconList.Images.SetKeyName(3, "CDRom");
+            this.IconList.Images.SetKeyName(4, "Network");
+            this.IconList.Images.SetKeyName(5, "UnkownFolder");
+            this.IconList.Images.SetKeyName(6, "estrela");
+            this.IconList.Images.SetKeyName(7, "Personal");
+            this.IconList.Images.SetKeyName(8, "Removable");
             // 
             // buttonUpdateList
             // 
@@ -88,11 +91,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(391, 448);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonUpdateList);
             this.Controls.Add(this.directoryTree);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SearchDirectory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchDirectory";

@@ -24,11 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.mainAppPanel = new System.Windows.Forms.Panel();
-            this.listBackupProfiles = new System.Windows.Forms.DataGridView();
-            this.labelBackupsConfigurados = new System.Windows.Forms.Label();
-            this.buttonEditProfile = new System.Windows.Forms.Button();
-            this.buttonAddProfile = new System.Windows.Forms.Button();
             this.buttonRemoveProfile = new System.Windows.Forms.Button();
+            this.buttonAddProfile = new System.Windows.Forms.Button();
+            this.buttonEditProfile = new System.Windows.Forms.Button();
+            this.labelBackupsConfigurados = new System.Windows.Forms.Label();
+            this.listBackupProfiles = new System.Windows.Forms.DataGridView();
             this.mainAppPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBackupProfiles)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +44,45 @@
             this.mainAppPanel.Name = "mainAppPanel";
             this.mainAppPanel.Size = new System.Drawing.Size(960, 578);
             this.mainAppPanel.TabIndex = 0;
+            // 
+            // buttonRemoveProfile
+            // 
+            this.buttonRemoveProfile.Location = new System.Drawing.Point(5, 270);
+            this.buttonRemoveProfile.Name = "buttonRemoveProfile";
+            this.buttonRemoveProfile.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemoveProfile.TabIndex = 4;
+            this.buttonRemoveProfile.Text = "Remover";
+            this.buttonRemoveProfile.UseVisualStyleBackColor = true;
+            this.buttonRemoveProfile.Click += new System.EventHandler(this.buttonRemoveProfile_Click);
+            // 
+            // buttonAddProfile
+            // 
+            this.buttonAddProfile.Location = new System.Drawing.Point(762, 270);
+            this.buttonAddProfile.Name = "buttonAddProfile";
+            this.buttonAddProfile.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddProfile.TabIndex = 3;
+            this.buttonAddProfile.Text = "Novo backup";
+            this.buttonAddProfile.UseVisualStyleBackColor = true;
+            this.buttonAddProfile.Click += new System.EventHandler(this.buttonAddProfile_Click);
+            // 
+            // buttonEditProfile
+            // 
+            this.buttonEditProfile.Location = new System.Drawing.Point(863, 270);
+            this.buttonEditProfile.Name = "buttonEditProfile";
+            this.buttonEditProfile.Size = new System.Drawing.Size(91, 23);
+            this.buttonEditProfile.TabIndex = 2;
+            this.buttonEditProfile.Text = "Editar backup";
+            this.buttonEditProfile.UseVisualStyleBackColor = true;
+            this.buttonEditProfile.Click += new System.EventHandler(this.buttonEditProfile_Click);
+            // 
+            // labelBackupsConfigurados
+            // 
+            this.labelBackupsConfigurados.AutoSize = true;
+            this.labelBackupsConfigurados.Location = new System.Drawing.Point(8, 4);
+            this.labelBackupsConfigurados.Name = "labelBackupsConfigurados";
+            this.labelBackupsConfigurados.Size = new System.Drawing.Size(113, 13);
+            this.labelBackupsConfigurados.TabIndex = 1;
+            this.labelBackupsConfigurados.Text = "Backups configurados";
             // 
             // listBackupProfiles
             // 
@@ -67,44 +106,6 @@
             this.listBackupProfiles.Size = new System.Drawing.Size(950, 242);
             this.listBackupProfiles.TabIndex = 0;
             // 
-            // labelBackupsConfigurados
-            // 
-            this.labelBackupsConfigurados.AutoSize = true;
-            this.labelBackupsConfigurados.Location = new System.Drawing.Point(8, 4);
-            this.labelBackupsConfigurados.Name = "labelBackupsConfigurados";
-            this.labelBackupsConfigurados.Size = new System.Drawing.Size(113, 13);
-            this.labelBackupsConfigurados.TabIndex = 1;
-            this.labelBackupsConfigurados.Text = "Backups configurados";
-            // 
-            // buttonEditProfile
-            // 
-            this.buttonEditProfile.Location = new System.Drawing.Point(863, 270);
-            this.buttonEditProfile.Name = "buttonEditProfile";
-            this.buttonEditProfile.Size = new System.Drawing.Size(91, 23);
-            this.buttonEditProfile.TabIndex = 2;
-            this.buttonEditProfile.Text = "Editar backup";
-            this.buttonEditProfile.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddProfile
-            // 
-            this.buttonAddProfile.Location = new System.Drawing.Point(762, 270);
-            this.buttonAddProfile.Name = "buttonAddProfile";
-            this.buttonAddProfile.Size = new System.Drawing.Size(95, 23);
-            this.buttonAddProfile.TabIndex = 3;
-            this.buttonAddProfile.Text = "Novo backup";
-            this.buttonAddProfile.UseVisualStyleBackColor = true;
-            this.buttonAddProfile.Click += new System.EventHandler(this.buttonAddProfile_Click);
-            // 
-            // buttonRemoveProfile
-            // 
-            this.buttonRemoveProfile.Location = new System.Drawing.Point(5, 270);
-            this.buttonRemoveProfile.Name = "buttonRemoveProfile";
-            this.buttonRemoveProfile.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemoveProfile.TabIndex = 4;
-            this.buttonRemoveProfile.Text = "Remover";
-            this.buttonRemoveProfile.UseVisualStyleBackColor = true;
-            this.buttonRemoveProfile.Click += new System.EventHandler(this.buttonRemoveProfile_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,6 +116,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DC Backup Tool";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
             this.mainAppPanel.ResumeLayout(false);
             this.mainAppPanel.PerformLayout();

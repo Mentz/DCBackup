@@ -19,15 +19,9 @@ namespace BackupTool.SettingsApp
         public SearchDirectory()
         {
             InitializeComponent();
+            this.ControlBox = false;
             itemsMarcados = new List<string>();
             itemsToExpand = new List< List<string> > (20);
-        }
-
-        public void expandParent(TreeNode no) {
-            if(no.Parent != null) {
-                no.Parent.Expand();
-                expandParent(no.Parent);
-            }
         }
 
         public void newTreeViewRoot(string name, string diretorio, string imageIndex) {
@@ -71,21 +65,17 @@ namespace BackupTool.SettingsApp
 
         public void checkNodeToExpand(TreeNode no) {
             int depth = no.Level;
-
-            int i = 0;
             foreach(List<string> list in itemsToExpand) {
                 ///MessageBox.Show(depth.ToString() + " " + list[depth] + " " + no.Text);
                 if(depth < list.Count() - 1)
                     if (list[depth] == no.Text)
                         no.Expand();
-                i++;
             }
         }
 
         public void setTreeViewRoots() {
             foreach (string dir in Environment.GetLogicalDrives()) {
                 DriveInfo drive = new DriveInfo(dir);
-               
                 newTreeViewRoot(dir, dir, drive.DriveType.ToString());
             }
         }
@@ -109,11 +99,12 @@ namespace BackupTool.SettingsApp
         }
 
         private void directoryTree_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
+            e.Node.ImageKey = "OpenFolder";
             if (e.Node.Nodes.Count > 0) {
                 if (e.Node.Nodes[0].Text == "..." && e.Node.Nodes[0].Tag == null) {
                     e.Node.Nodes.Clear();
                     string[] dirs = Directory.GetDirectories(e.Node.Tag.ToString());
-                    foreach (string dir in dirs){
+                    foreach (string dir in dirs) {
                         DirectoryInfo di = new DirectoryInfo(dir);
                         TreeNode node = new TreeNode(di.Name, 0, 0);
 
@@ -124,7 +115,7 @@ namespace BackupTool.SettingsApp
                                 node.Nodes.Add(null, "...", 0, 0);
                             }
                         }
-                        catch (UnauthorizedAccessException){
+                        catch (UnauthorizedAccessException) {
                             diretorioAutorizado = false;
                         }
                         catch (Exception ex) {
@@ -175,16 +166,6 @@ namespace BackupTool.SettingsApp
             }
         }
 
-        public void recursion(TreeNode no) {
-            if (no.Nodes.Count > 0) {
-                foreach (TreeNode n in no.Nodes) {
-                    n.Checked = no.Checked;
-                    if (n.Nodes.Count > 0)
-                        recursion(n);
-                }
-            }
-        }
-
         private void buttonUpdateList_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -193,6 +174,12 @@ namespace BackupTool.SettingsApp
         private void buttonCancel_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void directoryTree_BeforeCollapse(object sender, TreeViewCancelEventArgs e) {
+            //e.Node.ImageKey = "OpenFolder";
+            if (e.Node.ImageKey == "OpenFolder")
+                e.Node.ImageKey = "Root";
         }
     }
 }

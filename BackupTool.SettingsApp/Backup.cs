@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 namespace BackupTool.SettingsApp {
     public partial class Backup: Form {
@@ -56,6 +58,8 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
+                buttonAddFile.Enabled = true;
+                buttonAddFolder.Enabled = false;
                 backupItemList.Clear();
                 UpdateItemList();
             }
@@ -63,38 +67,28 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFiles_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFiles.Checked) {
+                buttonAddFile.Enabled = false;
+                buttonAddFolder.Enabled = true;
                 backupItemList.Clear();
                 UpdateItemList();
             }
         }
 
         private void buttonAddItem_Click(object sender, EventArgs e) {
-            if (radioButtonFiles.Checked) {
-                FileDialog.ShowDialog();
-                AddToItemList(FileDialog.FileNames.ToList<string>());
-                UpdateItemList();
-            }
-            else if (radioButtonFolders.Checked) {
-
-                // Novo método desenvolvido pelo Leonardo. (Não) funciona muito bem ainda
-                SearchDirectory newTreeSelect = new SearchDirectory();
-                newTreeSelect.SetSelectedItems(GetSelectedItemList());
-                newTreeSelect.setTreeViewRoots();
-                if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
-                    List<string> things = new List<string>();
-                    foreach (string s in newTreeSelect.GetSelectedItems()) {
-                        things.Add(s);
-                    }
-                    ClearItemList();
-                    AddToItemList(things);
+            SearchDirectory newTreeSelect = new SearchDirectory();
+            newTreeSelect.SetSelectedItems(GetSelectedItemList());
+            newTreeSelect.setTreeViewRoots();
+            if (newTreeSelect.ShowDialog(this) == DialogResult.OK) {
+                List<string> things = new List<string>();
+                foreach (string s in newTreeSelect.GetSelectedItems()) {
+                    things.Add(s);
                 }
-
-                newTreeSelect.Dispose();
-
+                ClearItemList();
+                AddToItemList(things);
             }
-            else {
-                MessageBox.Show("Houve um erro (cód. 0001).\nFavor comunicar ao programador Leonardo:\n\nRadio unselected.");
-            }
+
+            newTreeSelect.Dispose();
+            newTreeSelect = null;
         }
 
         private void ClearItemList() {
@@ -106,18 +100,26 @@ namespace BackupTool.SettingsApp {
                 MessageBox.Show("Selecione um item para remover.");
             }
             else {
-                backupItemList.RemoveAt(listBoxSelectedItems.SelectedIndex);
+                //Remove vários itens, meu pai pediu para habilitar a remoção de vários itens. Apesar de eu descordar com isso.
+                backupItemList.Clear();
+                foreach (string items in listBoxSelectedItems.Items) {
+                    bool CheckToRemove = false;
+                    foreach (int itemToRemove in listBoxSelectedItems.SelectedIndices) {
+                        if (items == listBoxSelectedItems.Items[itemToRemove].ToString()) {
+                            CheckToRemove = true;
+                        }
+                    }
+                    
+                    if (CheckToRemove == false) {
+                        backupItemList.Add(items);
+                    }
+                }
                 UpdateItemList();
             }
         }
 
         private void buttonSaveProfile_Click(object sender, EventArgs e) {
             this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e) {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -129,5 +131,23 @@ namespace BackupTool.SettingsApp {
 
         #endregion
 
+        private void buttonAddFile_Click(object sender, EventArgs e) {
+            FileDialog.ShowDialog();
+            AddToItemList(FileDialog.FileNames.ToList<string>());
+            UpdateItemList();
+        }
+
+        private void listBoxSelectedItems_MouseDoubleClick(object sender, MouseEventArgs e) {
+            //for(int i = listBoxSelectedItems.SelectedItem.ToString().Count() - 1; i >= 0; i++) {
+
+            //}
+            if (listBoxSelectedItems.SelectedIndex != -1) {
+                DirectoryInfo dir = new DirectoryInfo(listBoxSelectedItems.SelectedItem.ToString());
+                if (dir.Extension.ToString() != "")
+                    Process.Start(Path.GetDirectoryName(dir.ToString()));
+                else
+                    Process.Start(listBoxSelectedItems.SelectedItem.ToString());
+            }
+        }
     }
 }
