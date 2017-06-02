@@ -92,6 +92,7 @@
             this.label1.Size = new System.Drawing.Size(270, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Dois cliques em item selecionado abrirá local do arquivo";
+            this.toolTips.SetToolTip(this.label1, "O ANIMAL ISSO DAQUI JÁ É UM TOOLTIP \'-\'");
             // 
             // buttonAddFile
             // 
