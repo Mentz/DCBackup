@@ -54,6 +54,11 @@ namespace BackupTool.SettingsApp {
             listBoxSelectedItems.DataSource = backupItemList;
         }
 
+        public void SetItemList(List<string> items) {
+            ClearItemList();
+            AddToItemList(items);
+        }
+
         #region FormEventHandlers
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
@@ -157,8 +162,6 @@ namespace BackupTool.SettingsApp {
             }
         }
 
-        #endregion
-
         private void BackupTabControl_SelectedIndexChanged_1(object sender, EventArgs e) {
             if (BackupTabControl.SelectedIndex == 0) {
                 buttonBackTab.Enabled = false;
@@ -178,5 +181,8 @@ namespace BackupTool.SettingsApp {
         private void buttonBackTab_Click(object sender, EventArgs e) {
             BackupTabControl.SelectTab(BackupTabControl.SelectedIndex - 1);
         }
+
+        #endregion
+        
     }
 }

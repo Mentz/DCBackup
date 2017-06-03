@@ -118,11 +118,11 @@ namespace DC_Backup_Tool___Settings {
             backupSetupDialog.Dispose();
         }
 
-        #endregion
-
         private void buttonEditProfile_Click(object sender, EventArgs e) {
 
         }
+
+        #endregion
 
         private void Main_Load(object sender, EventArgs e) {
 
