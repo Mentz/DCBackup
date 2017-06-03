@@ -42,10 +42,10 @@ namespace BackupTool.SettingsApp
                     TreeNode tmp = new TreeNode();
                     tmp.Text = dInfo.Name;
 
-                    if (tmp.Text == "Program Files")
+                    /*if (tmp.Text == "Program Files")
                         tmp.Text = "Arquivos de Programas";
                     else if (tmp.Text == "Program Files (x86)")
-                        tmp.Text = "Arquivos de Progamas (x86)";
+                        tmp.Text = "Arquivos de Progamas (x86)";*/
 
                     tmp.Tag = dInfo;
                     tmp.ImageIndex = 0;

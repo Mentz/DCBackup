@@ -58,6 +58,7 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
+                checkBoxDiferencial.Enabled = false;
                 buttonAddFile.Enabled = true;
                 buttonAddFolder.Enabled = false;
                 backupItemList.Clear();
@@ -67,6 +68,7 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFiles_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFiles.Checked) {
+                checkBoxDiferencial.Enabled = true;
                 buttonAddFile.Enabled = false;
                 buttonAddFolder.Enabled = true;
                 backupItemList.Clear();
@@ -177,6 +179,10 @@ namespace BackupTool.SettingsApp {
 
         private void buttonBackTab_Click(object sender, EventArgs e) {
             BackupTabControl.SelectTab(BackupTabControl.SelectedIndex - 1);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e) {
+
         }
     }
 }
