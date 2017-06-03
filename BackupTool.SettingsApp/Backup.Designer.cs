@@ -248,7 +248,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 42);
+            this.label4.Location = new System.Drawing.Point(340, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(10, 13);
             this.label4.TabIndex = 18;
@@ -265,7 +265,7 @@
             "30",
             "40",
             "50"});
-            this.comboBoxMinutos.Location = new System.Drawing.Point(177, 39);
+            this.comboBoxMinutos.Location = new System.Drawing.Point(349, 47);
             this.comboBoxMinutos.Name = "comboBoxMinutos";
             this.comboBoxMinutos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxMinutos.Size = new System.Drawing.Size(47, 21);
@@ -279,7 +279,7 @@
             this.comboBoxAmPm.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.comboBoxAmPm.Location = new System.Drawing.Point(230, 39);
+            this.comboBoxAmPm.Location = new System.Drawing.Point(402, 47);
             this.comboBoxAmPm.Name = "comboBoxAmPm";
             this.comboBoxAmPm.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxAmPm.Size = new System.Drawing.Size(41, 21);
@@ -302,7 +302,7 @@
             "10",
             "11",
             "12"});
-            this.comboBoxHora.Location = new System.Drawing.Point(121, 39);
+            this.comboBoxHora.Location = new System.Drawing.Point(293, 47);
             this.comboBoxHora.Name = "comboBoxHora";
             this.comboBoxHora.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxHora.Size = new System.Drawing.Size(47, 21);
@@ -313,7 +313,7 @@
             this.panelMensal.Controls.Add(this.comboBoxMensal);
             this.panelMensal.Controls.Add(this.checkedListBoxMensal);
             this.panelMensal.Enabled = false;
-            this.panelMensal.Location = new System.Drawing.Point(182, 79);
+            this.panelMensal.Location = new System.Drawing.Point(182, 47);
             this.panelMensal.Name = "panelMensal";
             this.panelMensal.Size = new System.Drawing.Size(168, 187);
             this.panelMensal.TabIndex = 15;
@@ -392,15 +392,15 @@
             this.panelCustomizado.Controls.Add(this.label2);
             this.panelCustomizado.Controls.Add(this.comboBoxCustomizado);
             this.panelCustomizado.Enabled = false;
-            this.panelCustomizado.Location = new System.Drawing.Point(356, 79);
+            this.panelCustomizado.Location = new System.Drawing.Point(356, 47);
             this.panelCustomizado.Name = "panelCustomizado";
-            this.panelCustomizado.Size = new System.Drawing.Size(364, 80);
+            this.panelCustomizado.Size = new System.Drawing.Size(364, 181);
             this.panelCustomizado.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(291, 35);
+            this.label3.Location = new System.Drawing.Point(291, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 13;
@@ -424,7 +424,7 @@
             "Sexta-Feira",
             "Sábado",
             "Domingo"});
-            this.comboBoxDiaSemana.Location = new System.Drawing.Point(163, 32);
+            this.comboBoxDiaSemana.Location = new System.Drawing.Point(163, 82);
             this.comboBoxDiaSemana.Name = "comboBoxDiaSemana";
             this.comboBoxDiaSemana.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxDiaSemana.Size = new System.Drawing.Size(122, 21);
@@ -434,7 +434,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 16);
+            this.label2.Location = new System.Drawing.Point(35, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 11;
@@ -456,7 +456,7 @@
             "Terceiro",
             "Quarto",
             "Ultimo"});
-            this.comboBoxCustomizado.Location = new System.Drawing.Point(35, 32);
+            this.comboBoxCustomizado.Location = new System.Drawing.Point(35, 82);
             this.comboBoxCustomizado.Name = "comboBoxCustomizado";
             this.comboBoxCustomizado.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxCustomizado.Size = new System.Drawing.Size(122, 21);
@@ -466,7 +466,7 @@
             // radioButtonCustomizado
             // 
             this.radioButtonCustomizado.AutoSize = true;
-            this.radioButtonCustomizado.Location = new System.Drawing.Point(392, 56);
+            this.radioButtonCustomizado.Location = new System.Drawing.Point(392, 24);
             this.radioButtonCustomizado.Name = "radioButtonCustomizado";
             this.radioButtonCustomizado.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.radioButtonCustomizado.Size = new System.Drawing.Size(128, 17);
@@ -497,7 +497,7 @@
             // 
             this.radioButtonSemanal.AutoSize = true;
             this.radioButtonSemanal.Checked = true;
-            this.radioButtonSemanal.Location = new System.Drawing.Point(42, 56);
+            this.radioButtonSemanal.Location = new System.Drawing.Point(42, 24);
             this.radioButtonSemanal.Name = "radioButtonSemanal";
             this.radioButtonSemanal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.radioButtonSemanal.Size = new System.Drawing.Size(66, 17);
@@ -511,7 +511,7 @@
             // RadiobuttonMensal
             // 
             this.RadiobuttonMensal.AutoSize = true;
-            this.RadiobuttonMensal.Location = new System.Drawing.Point(218, 56);
+            this.RadiobuttonMensal.Location = new System.Drawing.Point(218, 24);
             this.RadiobuttonMensal.Name = "RadiobuttonMensal";
             this.RadiobuttonMensal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RadiobuttonMensal.Size = new System.Drawing.Size(59, 17);
@@ -636,7 +636,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Clock_30;
-            this.pictureBox6.Location = new System.Drawing.Point(77, 25);
+            this.pictureBox6.Location = new System.Drawing.Point(249, 33);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(30, 30);
             this.pictureBox6.TabIndex = 20;
@@ -646,7 +646,7 @@
             // 
             this.pictureBox5.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Edit_Property_30;
             this.pictureBox5.InitialImage = global::BackupTool.SettingsApp.Properties.Resources.icons8_Edit_30;
-            this.pictureBox5.Location = new System.Drawing.Point(356, 50);
+            this.pictureBox5.Location = new System.Drawing.Point(356, 18);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(30, 29);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -656,7 +656,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_31_301;
-            this.pictureBox4.Location = new System.Drawing.Point(184, 54);
+            this.pictureBox4.Location = new System.Drawing.Point(184, 22);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(26, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -666,7 +666,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_31_302;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 54);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 22);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(26, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -676,7 +676,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(113, 20);
+            this.label5.Location = new System.Drawing.Point(285, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(161, 13);
             this.label5.TabIndex = 21;
@@ -691,15 +691,15 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Controls.Add(this.comboBoxAmPm);
-            this.panel2.Location = new System.Drawing.Point(356, 165);
+            this.panel2.Location = new System.Drawing.Point(6, 240);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 98);
+            this.panel2.Size = new System.Drawing.Size(714, 98);
             this.panel2.TabIndex = 22;
             // 
             // panelSemanal
             // 
             this.panelSemanal.Controls.Add(this.checkedListBoxSemanal);
-            this.panelSemanal.Location = new System.Drawing.Point(6, 79);
+            this.panelSemanal.Location = new System.Drawing.Point(6, 47);
             this.panelSemanal.Name = "panelSemanal";
             this.panelSemanal.Size = new System.Drawing.Size(174, 186);
             this.panelSemanal.TabIndex = 23;
