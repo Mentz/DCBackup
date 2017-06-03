@@ -185,6 +185,34 @@ namespace BackupTool.SettingsApp {
         }
 
         #endregion
-        
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void radioButtonSemanal_CheckedChanged(object sender, EventArgs e) {
+            if(radioButtonSemanal.Checked == true) {
+                panelSemanal.Enabled = true;
+                panelCustomizado.Enabled = false;
+                panelMensal.Enabled = false;
+            }
+        }
+
+        private void RadiobuttonMensal_CheckedChanged(object sender, EventArgs e) {
+            if(RadiobuttonMensal.Checked == true) {
+                comboBoxMensal.SelectedIndex = 0;
+                panelSemanal.Enabled = false;
+                panelMensal.Enabled = true;
+                panelCustomizado.Enabled = false;
+            }
+        }
+
+        private void radioButtonCustomizado_CheckedChanged(object sender, EventArgs e) {
+            if(radioButtonCustomizado.Checked == true) {
+                panelSemanal.Enabled = false;
+                panelMensal.Enabled = false;
+                panelCustomizado.Enabled = true;
+            }
+        }
     }
 }

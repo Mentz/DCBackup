@@ -120,10 +120,15 @@
   <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>291, 17</value>
   </metadata>
-  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>291, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAIBJREFUWEft
+        lLsNgDAMBTMhA7EC8yCGYQnEAqAIly6MTMhD3EnX5XOF5QKgwDDOh6KWdwVOyxa2nl/3o6kEZiUw6/cC
+        FbU8gP54A6qg5d1fM09a/w6tGe/yGxKYlcCs4UBFLQ+gP96AKmh5bdZMfdNbH1EJJDDr/wIVtTyAjpRy
+        AjwGNqQYds0aAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="buttonAddFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAc9JREFUWEft
@@ -143,12 +148,4 @@
   <metadata name="FileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>186, 17</value>
   </metadata>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAIBJREFUWEft
-        lLsNgDAMBTMhA7EC8yCGYQnEAqAIly6MTMhD3EnX5XOF5QKgwDDOh6KWdwVOyxa2nl/3o6kEZiUw6/cC
-        FbU8gP54A6qg5d1fM09a/w6tGe/yGxKYlcCs4UBFLQ+gP96AKmh5bdZMfdNbH1EJJDDr/wIVtTyAjpRy
-        AjwGNqQYds0aAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

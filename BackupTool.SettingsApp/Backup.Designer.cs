@@ -32,21 +32,31 @@
             this.labelProfileName = new System.Windows.Forms.Label();
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxDiferencial = new System.Windows.Forms.CheckBox();
             this.radioButtonFolders = new System.Windows.Forms.RadioButton();
             this.radioButtonFiles = new System.Windows.Forms.RadioButton();
             this.listBoxSelectedItems = new System.Windows.Forms.ListBox();
             this.tabPageAgenda = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxMinutos = new System.Windows.Forms.ComboBox();
+            this.comboBoxAmPm = new System.Windows.Forms.ComboBox();
+            this.comboBoxHora = new System.Windows.Forms.ComboBox();
+            this.panelMensal = new System.Windows.Forms.Panel();
+            this.comboBoxMensal = new System.Windows.Forms.ComboBox();
+            this.checkedListBoxMensal = new System.Windows.Forms.CheckedListBox();
+            this.panelCustomizado = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxDiaSemana = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxCustomizado = new System.Windows.Forms.ComboBox();
+            this.radioButtonCustomizado = new System.Windows.Forms.RadioButton();
+            this.checkedListBoxSemanal = new System.Windows.Forms.CheckedListBox();
+            this.radioButtonSemanal = new System.Windows.Forms.RadioButton();
+            this.RadiobuttonMensal = new System.Windows.Forms.RadioButton();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.FolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxDiferencial = new System.Windows.Forms.CheckBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.Mensal = new System.Windows.Forms.RadioButton();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonNextTab = new System.Windows.Forms.Button();
             this.buttonBackTab = new System.Windows.Forms.Button();
             this.buttonSaveProfile = new System.Windows.Forms.Button();
@@ -55,20 +65,27 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonRemoveItem = new System.Windows.Forms.Button();
             this.buttonAddFolder = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelSemanal = new System.Windows.Forms.Panel();
             this.BackupTabControl.SuspendLayout();
             this.tabPageConfig.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPageAgenda.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelMensal.SuspendLayout();
+            this.panelCustomizado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panelSemanal.SuspendLayout();
             this.SuspendLayout();
             // 
             // BackupTabControl
@@ -156,6 +173,18 @@
             this.panel1.Size = new System.Drawing.Size(143, 66);
             this.panel1.TabIndex = 0;
             // 
+            // checkBoxDiferencial
+            // 
+            this.checkBoxDiferencial.AutoSize = true;
+            this.checkBoxDiferencial.Enabled = false;
+            this.checkBoxDiferencial.Location = new System.Drawing.Point(54, 40);
+            this.checkBoxDiferencial.Name = "checkBoxDiferencial";
+            this.checkBoxDiferencial.Size = new System.Drawing.Size(76, 17);
+            this.checkBoxDiferencial.TabIndex = 4;
+            this.checkBoxDiferencial.Text = "Diferencial";
+            this.toolTips.SetToolTip(this.checkBoxDiferencial, "Irá atualizar o backup com o novos arquivos da pasta selecionada");
+            this.checkBoxDiferencial.UseVisualStyleBackColor = true;
+            // 
             // radioButtonFolders
             // 
             this.radioButtonFolders.AutoSize = true;
@@ -198,15 +227,16 @@
             // 
             // tabPageAgenda
             // 
-            this.tabPageAgenda.Controls.Add(this.pictureBox5);
+            this.tabPageAgenda.Controls.Add(this.panelSemanal);
             this.tabPageAgenda.Controls.Add(this.panel2);
-            this.tabPageAgenda.Controls.Add(this.radioButton2);
+            this.tabPageAgenda.Controls.Add(this.panelMensal);
+            this.tabPageAgenda.Controls.Add(this.pictureBox5);
+            this.tabPageAgenda.Controls.Add(this.panelCustomizado);
+            this.tabPageAgenda.Controls.Add(this.radioButtonCustomizado);
             this.tabPageAgenda.Controls.Add(this.pictureBox4);
             this.tabPageAgenda.Controls.Add(this.pictureBox3);
-            this.tabPageAgenda.Controls.Add(this.checkedListBox2);
-            this.tabPageAgenda.Controls.Add(this.radioButton1);
-            this.tabPageAgenda.Controls.Add(this.checkedListBox1);
-            this.tabPageAgenda.Controls.Add(this.Mensal);
+            this.tabPageAgenda.Controls.Add(this.radioButtonSemanal);
+            this.tabPageAgenda.Controls.Add(this.RadiobuttonMensal);
             this.tabPageAgenda.Location = new System.Drawing.Point(4, 22);
             this.tabPageAgenda.Name = "tabPageAgenda";
             this.tabPageAgenda.Padding = new System.Windows.Forms.Padding(3);
@@ -215,64 +245,107 @@
             this.tabPageAgenda.Text = "Agendamento";
             this.tabPageAgenda.UseVisualStyleBackColor = true;
             // 
-            // FolderDialog
+            // label4
             // 
-            this.FolderDialog.ShowNewFolderButton = false;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(168, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(10, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = ":";
             // 
-            // FileDialog
+            // comboBoxMinutos
             // 
-            this.FileDialog.Multiselect = true;
+            this.comboBoxMinutos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMinutos.FormattingEnabled = true;
+            this.comboBoxMinutos.Items.AddRange(new object[] {
+            "00",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
+            this.comboBoxMinutos.Location = new System.Drawing.Point(177, 39);
+            this.comboBoxMinutos.Name = "comboBoxMinutos";
+            this.comboBoxMinutos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxMinutos.Size = new System.Drawing.Size(47, 21);
+            this.comboBoxMinutos.TabIndex = 17;
+            this.comboBoxMinutos.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
-            // toolTips
+            // comboBoxAmPm
             // 
-            this.toolTips.AutoPopDelay = 10000;
-            this.toolTips.InitialDelay = 500;
-            this.toolTips.IsBalloon = true;
-            this.toolTips.ReshowDelay = 100;
+            this.comboBoxAmPm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAmPm.FormattingEnabled = true;
+            this.comboBoxAmPm.Items.AddRange(new object[] {
+            "AM",
+            "PM"});
+            this.comboBoxAmPm.Location = new System.Drawing.Point(230, 39);
+            this.comboBoxAmPm.Name = "comboBoxAmPm";
+            this.comboBoxAmPm.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxAmPm.Size = new System.Drawing.Size(41, 21);
+            this.comboBoxAmPm.TabIndex = 16;
             // 
-            // checkBoxDiferencial
+            // comboBoxHora
             // 
-            this.checkBoxDiferencial.AutoSize = true;
-            this.checkBoxDiferencial.Enabled = false;
-            this.checkBoxDiferencial.Location = new System.Drawing.Point(54, 40);
-            this.checkBoxDiferencial.Name = "checkBoxDiferencial";
-            this.checkBoxDiferencial.Size = new System.Drawing.Size(76, 17);
-            this.checkBoxDiferencial.TabIndex = 4;
-            this.checkBoxDiferencial.Text = "Diferencial";
-            this.toolTips.SetToolTip(this.checkBoxDiferencial, "Irá atualizar o backup com o novos arquivos da pasta selecionada");
-            this.checkBoxDiferencial.UseVisualStyleBackColor = true;
+            this.comboBoxHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxHora.FormattingEnabled = true;
+            this.comboBoxHora.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comboBoxHora.Location = new System.Drawing.Point(121, 39);
+            this.comboBoxHora.Name = "comboBoxHora";
+            this.comboBoxHora.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxHora.Size = new System.Drawing.Size(47, 21);
+            this.comboBoxHora.TabIndex = 15;
             // 
-            // radioButton1
+            // panelMensal
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(42, 12);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioButton1.Size = new System.Drawing.Size(66, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Semanal";
-            this.radioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.panelMensal.Controls.Add(this.comboBoxMensal);
+            this.panelMensal.Controls.Add(this.checkedListBoxMensal);
+            this.panelMensal.Enabled = false;
+            this.panelMensal.Location = new System.Drawing.Point(182, 79);
+            this.panelMensal.Name = "panelMensal";
+            this.panelMensal.Size = new System.Drawing.Size(168, 187);
+            this.panelMensal.TabIndex = 15;
             // 
-            // Mensal
+            // comboBoxMensal
             // 
-            this.Mensal.AutoSize = true;
-            this.Mensal.Location = new System.Drawing.Point(218, 12);
-            this.Mensal.Name = "Mensal";
-            this.Mensal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Mensal.Size = new System.Drawing.Size(59, 17);
-            this.Mensal.TabIndex = 1;
-            this.Mensal.Text = "Mensal";
-            this.Mensal.UseVisualStyleBackColor = true;
+            this.comboBoxMensal.AutoCompleteCustomSource.AddRange(new string[] {
+            "Primeiro",
+            "Segundo",
+            "Terceiro",
+            "Quarto",
+            "Último"});
+            this.comboBoxMensal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMensal.FormattingEnabled = true;
+            this.comboBoxMensal.Items.AddRange(new object[] {
+            "Todo mês",
+            "A cada 2 meses",
+            "A cada 3 meses",
+            "A cada 6 meses"});
+            this.comboBoxMensal.Location = new System.Drawing.Point(0, 160);
+            this.comboBoxMensal.Name = "comboBoxMensal";
+            this.comboBoxMensal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxMensal.Size = new System.Drawing.Size(168, 21);
+            this.comboBoxMensal.TabIndex = 14;
+            this.comboBoxMensal.TabStop = false;
             // 
-            // checkedListBox1
+            // checkedListBoxMensal
             // 
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.ColumnWidth = 40;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.checkedListBoxMensal.CheckOnClick = true;
+            this.checkedListBoxMensal.ColumnWidth = 40;
+            this.checkedListBoxMensal.FormattingEnabled = true;
+            this.checkedListBoxMensal.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -304,18 +377,109 @@
             "29",
             "30",
             "31"});
-            this.checkedListBox1.Location = new System.Drawing.Point(184, 35);
-            this.checkedListBox1.MultiColumn = true;
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkedListBox1.Size = new System.Drawing.Size(166, 154);
-            this.checkedListBox1.TabIndex = 3;
+            this.checkedListBoxMensal.Location = new System.Drawing.Point(2, 0);
+            this.checkedListBoxMensal.MultiColumn = true;
+            this.checkedListBoxMensal.Name = "checkedListBoxMensal";
+            this.checkedListBoxMensal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkedListBoxMensal.Size = new System.Drawing.Size(166, 154);
+            this.checkedListBoxMensal.TabIndex = 3;
             // 
-            // checkedListBox2
+            // panelCustomizado
             // 
-            this.checkedListBox2.CheckOnClick = true;
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
+            this.panelCustomizado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCustomizado.Controls.Add(this.label3);
+            this.panelCustomizado.Controls.Add(this.comboBoxDiaSemana);
+            this.panelCustomizado.Controls.Add(this.label2);
+            this.panelCustomizado.Controls.Add(this.comboBoxCustomizado);
+            this.panelCustomizado.Enabled = false;
+            this.panelCustomizado.Location = new System.Drawing.Point(356, 79);
+            this.panelCustomizado.Name = "panelCustomizado";
+            this.panelCustomizado.Size = new System.Drawing.Size(364, 80);
+            this.panelCustomizado.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(291, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "do mês";
+            // 
+            // comboBoxDiaSemana
+            // 
+            this.comboBoxDiaSemana.AutoCompleteCustomSource.AddRange(new string[] {
+            "Primeiro",
+            "Segundo",
+            "Terceiro",
+            "Quarto",
+            "Último"});
+            this.comboBoxDiaSemana.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDiaSemana.FormattingEnabled = true;
+            this.comboBoxDiaSemana.Items.AddRange(new object[] {
+            "Segunda-Feira",
+            "Terça-Feira",
+            "Quarta-Feira",
+            "Quita-Feira",
+            "Sexta-Feira",
+            "Sábado",
+            "Domingo"});
+            this.comboBoxDiaSemana.Location = new System.Drawing.Point(163, 32);
+            this.comboBoxDiaSemana.Name = "comboBoxDiaSemana";
+            this.comboBoxDiaSemana.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxDiaSemana.Size = new System.Drawing.Size(122, 21);
+            this.comboBoxDiaSemana.TabIndex = 12;
+            this.comboBoxDiaSemana.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "A cada";
+            // 
+            // comboBoxCustomizado
+            // 
+            this.comboBoxCustomizado.AutoCompleteCustomSource.AddRange(new string[] {
+            "Primeiro",
+            "Segundo",
+            "Terceiro",
+            "Quarto",
+            "Último"});
+            this.comboBoxCustomizado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCustomizado.FormattingEnabled = true;
+            this.comboBoxCustomizado.Items.AddRange(new object[] {
+            "Segundo",
+            "Primeiro",
+            "Terceiro",
+            "Quarto",
+            "Ultimo"});
+            this.comboBoxCustomizado.Location = new System.Drawing.Point(35, 32);
+            this.comboBoxCustomizado.Name = "comboBoxCustomizado";
+            this.comboBoxCustomizado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxCustomizado.Size = new System.Drawing.Size(122, 21);
+            this.comboBoxCustomizado.TabIndex = 10;
+            this.comboBoxCustomizado.TabStop = false;
+            // 
+            // radioButtonCustomizado
+            // 
+            this.radioButtonCustomizado.AutoSize = true;
+            this.radioButtonCustomizado.Location = new System.Drawing.Point(392, 56);
+            this.radioButtonCustomizado.Name = "radioButtonCustomizado";
+            this.radioButtonCustomizado.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButtonCustomizado.Size = new System.Drawing.Size(128, 17);
+            this.radioButtonCustomizado.TabIndex = 7;
+            this.radioButtonCustomizado.Text = "Intervalo customizado";
+            this.radioButtonCustomizado.UseVisualStyleBackColor = true;
+            this.radioButtonCustomizado.CheckedChanged += new System.EventHandler(this.radioButtonCustomizado_CheckedChanged);
+            // 
+            // checkedListBoxSemanal
+            // 
+            this.checkedListBoxSemanal.CheckOnClick = true;
+            this.checkedListBoxSemanal.FormattingEnabled = true;
+            this.checkedListBoxSemanal.Items.AddRange(new object[] {
             "Segunda-feira",
             "Terça-feira",
             "Quarta-feira",
@@ -323,11 +487,38 @@
             "Sexta-feira",
             "Sábado",
             "Domingo"});
-            this.checkedListBox2.Location = new System.Drawing.Point(6, 35);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkedListBox2.Size = new System.Drawing.Size(172, 154);
-            this.checkedListBox2.TabIndex = 4;
+            this.checkedListBoxSemanal.Location = new System.Drawing.Point(0, 0);
+            this.checkedListBoxSemanal.Name = "checkedListBoxSemanal";
+            this.checkedListBoxSemanal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkedListBoxSemanal.Size = new System.Drawing.Size(172, 184);
+            this.checkedListBoxSemanal.TabIndex = 4;
+            // 
+            // radioButtonSemanal
+            // 
+            this.radioButtonSemanal.AutoSize = true;
+            this.radioButtonSemanal.Checked = true;
+            this.radioButtonSemanal.Location = new System.Drawing.Point(42, 56);
+            this.radioButtonSemanal.Name = "radioButtonSemanal";
+            this.radioButtonSemanal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButtonSemanal.Size = new System.Drawing.Size(66, 17);
+            this.radioButtonSemanal.TabIndex = 0;
+            this.radioButtonSemanal.TabStop = true;
+            this.radioButtonSemanal.Text = "Semanal";
+            this.radioButtonSemanal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.radioButtonSemanal.UseVisualStyleBackColor = true;
+            this.radioButtonSemanal.CheckedChanged += new System.EventHandler(this.radioButtonSemanal_CheckedChanged);
+            // 
+            // RadiobuttonMensal
+            // 
+            this.RadiobuttonMensal.AutoSize = true;
+            this.RadiobuttonMensal.Location = new System.Drawing.Point(218, 56);
+            this.RadiobuttonMensal.Name = "RadiobuttonMensal";
+            this.RadiobuttonMensal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RadiobuttonMensal.Size = new System.Drawing.Size(59, 17);
+            this.RadiobuttonMensal.TabIndex = 1;
+            this.RadiobuttonMensal.Text = "Mensal";
+            this.RadiobuttonMensal.UseVisualStyleBackColor = true;
+            this.RadiobuttonMensal.CheckedChanged += new System.EventHandler(this.RadiobuttonMensal_CheckedChanged);
             // 
             // tabPage1
             // 
@@ -338,26 +529,20 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // FolderDialog
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(392, 12);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioButton2.Size = new System.Drawing.Size(128, 17);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.Text = "Intervalo customizado";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.FolderDialog.ShowNewFolderButton = false;
             // 
-            // panel2
+            // FileDialog
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Location = new System.Drawing.Point(356, 35);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 154);
-            this.panel2.TabIndex = 8;
+            this.FileDialog.Multiselect = true;
+            // 
+            // toolTips
+            // 
+            this.toolTips.AutoPopDelay = 10000;
+            this.toolTips.InitialDelay = 500;
+            this.toolTips.IsBalloon = true;
+            this.toolTips.ReshowDelay = 100;
             // 
             // buttonNextTab
             // 
@@ -448,44 +633,76 @@
             this.buttonAddFolder.UseVisualStyleBackColor = false;
             this.buttonAddFolder.Click += new System.EventHandler(this.buttonAddItem_Click);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Clock_30;
+            this.pictureBox6.Location = new System.Drawing.Point(77, 25);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox6.TabIndex = 20;
+            this.pictureBox6.TabStop = false;
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Edit_Property_30;
             this.pictureBox5.InitialImage = global::BackupTool.SettingsApp.Properties.Resources.icons8_Edit_30;
-            this.pictureBox5.Location = new System.Drawing.Point(356, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(356, 50);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox5.Size = new System.Drawing.Size(30, 29);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_31_30;
-            this.pictureBox4.Location = new System.Drawing.Point(182, 6);
+            this.pictureBox4.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_31_301;
+            this.pictureBox4.Location = new System.Drawing.Point(184, 54);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox4.Size = new System.Drawing.Size(26, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_7_30;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox3.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Calendar_31_302;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 54);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox3.Size = new System.Drawing.Size(26, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // comboBox1
+            // label5
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 21);
-            this.comboBox1.TabIndex = 10;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(113, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Horário de execução do Backup";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.comboBoxHora);
+            this.panel2.Controls.Add(this.comboBoxMinutos);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.pictureBox6);
+            this.panel2.Controls.Add(this.comboBoxAmPm);
+            this.panel2.Location = new System.Drawing.Point(356, 165);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(364, 98);
+            this.panel2.TabIndex = 22;
+            // 
+            // panelSemanal
+            // 
+            this.panelSemanal.Controls.Add(this.checkedListBoxSemanal);
+            this.panelSemanal.Location = new System.Drawing.Point(6, 79);
+            this.panelSemanal.Name = "panelSemanal";
+            this.panelSemanal.Size = new System.Drawing.Size(174, 186);
+            this.panelSemanal.TabIndex = 23;
             // 
             // Backup
             // 
@@ -509,12 +726,18 @@
             this.panel1.PerformLayout();
             this.tabPageAgenda.ResumeLayout(false);
             this.tabPageAgenda.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.panelMensal.ResumeLayout(false);
+            this.panelCustomizado.ResumeLayout(false);
+            this.panelCustomizado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panelSemanal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -544,16 +767,29 @@
         private System.Windows.Forms.Button buttonBackTab;
         private System.Windows.Forms.Button buttonNextTab;
         private System.Windows.Forms.CheckBox checkBoxDiferencial;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton Mensal;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.RadioButton radioButtonSemanal;
+        private System.Windows.Forms.RadioButton RadiobuttonMensal;
+        private System.Windows.Forms.CheckedListBox checkedListBoxMensal;
+        private System.Windows.Forms.CheckedListBox checkedListBoxSemanal;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButtonCustomizado;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panelCustomizado;
+        private System.Windows.Forms.ComboBox comboBoxCustomizado;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxDiaSemana;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxMensal;
+        private System.Windows.Forms.Panel panelMensal;
+        private System.Windows.Forms.ComboBox comboBoxAmPm;
+        private System.Windows.Forms.ComboBox comboBoxHora;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxMinutos;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel panelSemanal;
     }
 }
