@@ -93,6 +93,26 @@ namespace BackupTool.SettingsApp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Arrow_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Arrow-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Arrow_31 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Arrow-31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Light_On_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-Light On-16", resourceCulture);

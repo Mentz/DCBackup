@@ -97,7 +97,7 @@ namespace BackupTool.SettingsApp {
 
         private void buttonRemoveItem_Click(object sender, EventArgs e) {
             if (listBoxSelectedItems.SelectedIndex == -1) {
-                MessageBox.Show("Selecione um item para remover.");
+                MessageBox.Show("Por favor, selecione um item para remover", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else {
                 //Remove vários itens, meu pai pediu para habilitar a remoção de vários itens. Apesar de eu descordar com isso.
@@ -131,14 +131,23 @@ namespace BackupTool.SettingsApp {
 
         private void buttonAddFile_Click(object sender, EventArgs e) {
             FileDialog.ShowDialog();
-            AddToItemList(FileDialog.FileNames.ToList<string>());
+
+            List<string> NovosItens = new List<string>();
+            foreach(string str in FileDialog.FileNames.ToList<String>()) {
+                bool check = false;
+                foreach(string item in listBoxSelectedItems.Items) {
+                    if (str == item)
+                        check = true;
+                }
+
+                if (check == false)
+                    NovosItens.Add(str);
+            }
+            AddToItemList(NovosItens);
             UpdateItemList();
         }
 
         private void listBoxSelectedItems_MouseDoubleClick(object sender, MouseEventArgs e) {
-            //for(int i = listBoxSelectedItems.SelectedItem.ToString().Count() - 1; i >= 0; i++) {
-
-            //}
             if (listBoxSelectedItems.SelectedIndex != -1) {
                 DirectoryInfo dir = new DirectoryInfo(listBoxSelectedItems.SelectedItem.ToString());
                 if (dir.Extension.ToString() != "")
@@ -149,5 +158,25 @@ namespace BackupTool.SettingsApp {
         }
 
         #endregion
+
+        private void BackupTabControl_SelectedIndexChanged_1(object sender, EventArgs e) {
+            if (BackupTabControl.SelectedIndex == 0) {
+                buttonBackTab.Enabled = false;
+            }
+            else buttonBackTab.Enabled = true;
+
+            if (BackupTabControl.SelectedIndex == BackupTabControl.TabCount - 1) {
+                buttonNextTab.Enabled = false;
+            }
+            else buttonNextTab.Enabled = true;
+        }
+
+        private void buttonNextTab_Click(object sender, EventArgs e) {
+            BackupTabControl.SelectTab(BackupTabControl.SelectedIndex + 1);
+        }
+
+        private void buttonBackTab_Click(object sender, EventArgs e) {
+            BackupTabControl.SelectTab(BackupTabControl.SelectedIndex - 1);
+        }
     }
 }

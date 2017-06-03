@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Backup));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.BackupTabControl = new System.Windows.Forms.TabControl();
             this.tabPageConfig = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAddFile = new System.Windows.Forms.Button();
@@ -45,24 +45,27 @@
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.buttonSaveProfile = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.buttonNextTab = new System.Windows.Forms.Button();
+            this.buttonBackTab = new System.Windows.Forms.Button();
+            this.BackupTabControl.SuspendLayout();
             this.tabPageConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // BackupTabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPageConfig);
-            this.tabControl1.Controls.Add(this.tabPageAgenda);
-            this.tabControl1.Location = new System.Drawing.Point(5, 5);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(734, 367);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 0;
+            this.BackupTabControl.Controls.Add(this.tabPageConfig);
+            this.BackupTabControl.Controls.Add(this.tabPageAgenda);
+            this.BackupTabControl.Location = new System.Drawing.Point(5, 5);
+            this.BackupTabControl.Name = "BackupTabControl";
+            this.BackupTabControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.BackupTabControl.SelectedIndex = 0;
+            this.BackupTabControl.Size = new System.Drawing.Size(734, 367);
+            this.BackupTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.BackupTabControl.TabIndex = 0;
+            this.BackupTabControl.SelectedIndexChanged += new System.EventHandler(this.BackupTabControl_SelectedIndexChanged_1);
             // 
             // tabPageConfig
             // 
@@ -92,12 +95,11 @@
             this.label1.Size = new System.Drawing.Size(270, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Dois cliques em item selecionado abrirá local do arquivo";
-            this.toolTips.SetToolTip(this.label1, "O ANIMAL ISSO DAQUI JÁ É UM TOOLTIP \'-\'");
             // 
             // buttonAddFile
             // 
             this.buttonAddFile.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Add_File_40;
-            this.buttonAddFile.Location = new System.Drawing.Point(206, 43);
+            this.buttonAddFile.Location = new System.Drawing.Point(136, 43);
             this.buttonAddFile.Name = "buttonAddFile";
             this.buttonAddFile.Size = new System.Drawing.Size(64, 66);
             this.buttonAddFile.TabIndex = 6;
@@ -194,7 +196,7 @@
             // buttonRemoveItem
             // 
             this.buttonRemoveItem.Image = global::BackupTool.SettingsApp.Properties.Resources.Excluir_40__1_;
-            this.buttonRemoveItem.Location = new System.Drawing.Point(655, 41);
+            this.buttonRemoveItem.Location = new System.Drawing.Point(656, 43);
             this.buttonRemoveItem.Name = "buttonRemoveItem";
             this.buttonRemoveItem.Size = new System.Drawing.Size(64, 67);
             this.buttonRemoveItem.TabIndex = 3;
@@ -221,7 +223,7 @@
             // 
             this.buttonAddFolder.Enabled = false;
             this.buttonAddFolder.Image = ((System.Drawing.Image)(resources.GetObject("buttonAddFolder.Image")));
-            this.buttonAddFolder.Location = new System.Drawing.Point(136, 43);
+            this.buttonAddFolder.Location = new System.Drawing.Point(206, 42);
             this.buttonAddFolder.Name = "buttonAddFolder";
             this.buttonAddFolder.Size = new System.Drawing.Size(64, 66);
             this.buttonAddFolder.TabIndex = 1;
@@ -235,7 +237,7 @@
             this.tabPageAgenda.Location = new System.Drawing.Point(4, 22);
             this.tabPageAgenda.Name = "tabPageAgenda";
             this.tabPageAgenda.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAgenda.Size = new System.Drawing.Size(726, 351);
+            this.tabPageAgenda.Size = new System.Drawing.Size(726, 341);
             this.tabPageAgenda.TabIndex = 1;
             this.tabPageAgenda.Text = "Agendamento";
             this.tabPageAgenda.UseVisualStyleBackColor = true;
@@ -266,20 +268,45 @@
             this.buttonSaveProfile.UseVisualStyleBackColor = true;
             this.buttonSaveProfile.Click += new System.EventHandler(this.buttonSaveProfile_Click);
             // 
+            // buttonNextTab
+            // 
+            this.buttonNextTab.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Arrow_30;
+            this.buttonNextTab.Location = new System.Drawing.Point(75, 374);
+            this.buttonNextTab.Name = "buttonNextTab";
+            this.buttonNextTab.Size = new System.Drawing.Size(64, 67);
+            this.buttonNextTab.TabIndex = 3;
+            this.toolTips.SetToolTip(this.buttonNextTab, "Prosseguir");
+            this.buttonNextTab.UseVisualStyleBackColor = true;
+            this.buttonNextTab.Click += new System.EventHandler(this.buttonNextTab_Click);
+            // 
+            // buttonBackTab
+            // 
+            this.buttonBackTab.Enabled = false;
+            this.buttonBackTab.Image = global::BackupTool.SettingsApp.Properties.Resources.icons8_Arrow_31;
+            this.buttonBackTab.Location = new System.Drawing.Point(5, 374);
+            this.buttonBackTab.Name = "buttonBackTab";
+            this.buttonBackTab.Size = new System.Drawing.Size(64, 67);
+            this.buttonBackTab.TabIndex = 2;
+            this.toolTips.SetToolTip(this.buttonBackTab, "Recuar");
+            this.buttonBackTab.UseVisualStyleBackColor = true;
+            this.buttonBackTab.Click += new System.EventHandler(this.buttonBackTab_Click);
+            // 
             // Backup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 446);
+            this.Controls.Add(this.buttonNextTab);
+            this.Controls.Add(this.buttonBackTab);
             this.Controls.Add(this.buttonSaveProfile);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.BackupTabControl);
             this.MaximizeBox = false;
             this.Name = "Backup";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ".";
             this.Load += new System.EventHandler(this.Backup_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.BackupTabControl.ResumeLayout(false);
             this.tabPageConfig.ResumeLayout(false);
             this.tabPageConfig.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -292,7 +319,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl BackupTabControl;
         private System.Windows.Forms.TabPage tabPageConfig;
         private System.Windows.Forms.TabPage tabPageAgenda;
         private System.Windows.Forms.ListBox listBoxSelectedItems;
@@ -312,5 +339,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonBackTab;
+        private System.Windows.Forms.Button buttonNextTab;
     }
 }

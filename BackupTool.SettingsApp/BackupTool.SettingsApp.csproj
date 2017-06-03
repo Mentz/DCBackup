@@ -93,12 +93,6 @@
     <Compile Include="SearchDirectory.Designer.cs">
       <DependentUpon>SearchDirectory.cs</DependentUpon>
     </Compile>
-    <Compile Include="TreeSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TreeSelect.Designer.cs">
-      <DependentUpon>TreeSelect.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,9 +111,6 @@
     </Compile>
     <EmbeddedResource Include="SearchDirectory.resx">
       <DependentUpon>SearchDirectory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TreeSelect.resx">
-      <DependentUpon>TreeSelect.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -170,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-Light On-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Arrow-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Arrow-31.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

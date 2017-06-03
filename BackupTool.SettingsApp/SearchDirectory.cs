@@ -37,11 +37,18 @@ namespace BackupTool.SettingsApp
                 checkNodeToExpand(no);
                 foreach (string dAtual in dirs) {
                     DirectoryInfo dInfo = new DirectoryInfo(dAtual);
+                    if (dInfo.ToString() == "C:\\Arquivos de Programas" || dInfo.ToString() == "C:\\Documents and Settings")
+                        continue;
                     TreeNode tmp = new TreeNode();
                     tmp.Text = dInfo.Name;
+
+                    if (tmp.Text == "Program Files")
+                        tmp.Text = "Arquivos de Programas";
+                    else if (tmp.Text == "Program Files (x86)")
+                        tmp.Text = "Arquivos de Progamas (x86)";
+
                     tmp.Tag = dInfo;
                     tmp.ImageIndex = 0;
-
                     try {
                         no.Nodes.Add(tmp);
                         if (dInfo.GetDirectories().Count() > 0) {
@@ -131,6 +138,7 @@ namespace BackupTool.SettingsApp
                                         node.Checked = true;
                                         //node.Expand();
                                     }
+                               
                                 e.Node.Nodes.Add(node);
                                 checkNodeToExpand(e.Node);
                                 checkNodeToExpand(node);
