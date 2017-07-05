@@ -42,7 +42,6 @@ namespace DC_Backup_Tool___Settings {
                     "Primeiro acesso",
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Information);
-                //MessageBox.Show(key.ToString());
             }
             catch (FileNotFoundException ex) {
                 CreateConfigFileFirstTime();
