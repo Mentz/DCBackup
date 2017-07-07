@@ -5,19 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BackupTool.SettingsApp {
-    class BackupProfile {
-        public int backupType { get; }
-        public List<BackupFile> arquivos { get; set; }
-        public List<Agenda> agenda { get; set; }
+    public class ProgramSettings {
+        private ODSettings OneDriveSettings;
+        private List<BackupProfile> bkpProfiles;
 
-        public BackupProfile() {
+    }
 
+
+
+
+    public class ODSettings {
+        private string privateKey;
+
+        public string getPrivateKey() {
+            return privateKey;
         }
     }
 
 
 
-    class BackupFile {
+
+    public class BackupProfile {
+        public string Nome { get; }
+        public List<BackupFile> Arquivos { get; set; }
+        public List<Agenda> Agenda { get; set; }
+
+        public BackupProfile(string name) {
+            this.Nome = name;
+            this.Arquivos = new List<BackupFile>();
+            this.Agenda = new List<Agenda>();
+        }
+    }
+
+
+
+    public class BackupFile {
         public string filename { get; set; }
         public int type { get; set; }
         private List<FileDescription> arquivos;
@@ -27,31 +49,59 @@ namespace BackupTool.SettingsApp {
         public BackupFile(string fn, int t) {
             this.filename = filename;
             this.type = type;
+            this.arquivos = new List<FileDescription>();
+            this.diretorios = new List<FolderDescription>();
+            this.atributos = new ZipConfig();
         }
 
-        private bool findItem(string file) {
+        private bool findFile(string file) {
             bool ret = false;
             foreach (FileDescription i in this.arquivos) {
-                if (i.path == file)
+                if (i.Path == file)
                     ret = true;
             }
-
             return ret;
         }
 
         public bool addFile(string file) {
-            if (findItem(file))
+            if (findFile(file))
                 return false;
-            this.arquivos.Add(file);
+            this.arquivos.Add(new FileDescription(file));
             return true;
         }
 
-        public bool removeFile(string file)
+        public bool removeFile(string file) {
+            if (!findFile(file))
+                return false;
+            for (int i = 0; i < arquivos.Count; i++) {
+                if (arquivos[i].Path == file) {
+                    arquivos.RemoveAt(i);
+                    i--;
+                }
+            }
+            return true;
+        }
+
+        private bool findFolder(string folder) {
+            bool ret = false;
+            foreach (FolderDescription i in this.diretorios) {
+                if (i.Path == folder)
+                    ret = true;
+            }
+            return ret;
+        }
+
+        public bool addFolder(string folder, int maxAge, bool recursive) {
+            if (findFolder(folder))
+                return false;
+            this.diretorios.Add(new FolderDescription(folder, maxAge, recursive));
+            return true;
+        }
     }
 
 
 
-    class Agenda {
+    public class Agenda {
         private bool[] semana;
         private int hora;
         private int minuto;
@@ -81,8 +131,32 @@ namespace BackupTool.SettingsApp {
 
 
 
-    class ZipConfig {
-        public bool passwordProtected { get; set; }
-        public string password { get; set; }
+    public class FileDescription {
+        public string Path { get; }
+
+        public FileDescription(string p) {
+            this.Path = p;
+        }
+    }
+
+
+
+    public class FolderDescription {
+        public string Path { get; }
+        public int MaxAge { get; set; }
+        public bool Recursive { get; set; }
+
+        public FolderDescription(string p, int ma, bool r) {
+            this.Path = p;
+            this.MaxAge = ma;
+            this.Recursive = r;
+        }
+    }
+
+
+
+    public class ZipConfig {
+        public bool PasswordProtected { get; set; }
+        public string Password { get; set; }
     }
 }
