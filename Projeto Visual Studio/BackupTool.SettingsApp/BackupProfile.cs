@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BackupTool.SettingsApp {
     public class ProgramSettings {
@@ -46,12 +47,22 @@ namespace BackupTool.SettingsApp {
         private List<FolderDescription> diretorios;
         private ZipConfig atributos;
 
-        public BackupFile(string fn, int t) {
+        public BackupFile(string fn, int t, bool protegido) {
             this.filename = filename;
             this.type = type;
             this.arquivos = new List<FileDescription>();
             this.diretorios = new List<FolderDescription>();
-            this.atributos = new ZipConfig();
+            if (protegido) {
+                InputMessageBox pwQuery = new InputMessageBox("Proteger com senha", "Digite a senha desejada");
+                pwQuery.Show();
+                if (pwQuery.DialogResult == DialogResult.OK) {
+                    this.atributos = new ZipConfig(true, pwQuery.getText());
+                }
+                else {
+                    this.atributos = new ZipConfig();
+                }
+            }
+
         }
 
         private bool findFile(string file) {
@@ -158,5 +169,20 @@ namespace BackupTool.SettingsApp {
     public class ZipConfig {
         public bool PasswordProtected { get; set; }
         public string Password { get; set; }
+
+        public ZipConfig() {
+            this.PasswordProtected = false;
+            this.Password = "";
+        }
+
+        public ZipConfig(bool pp, string p) {
+            this.PasswordProtected = pp;
+            if (pp) {
+                this.Password = p;
+            }
+            else {
+                this.Password = "";
+            }
+        }
     }
 }
