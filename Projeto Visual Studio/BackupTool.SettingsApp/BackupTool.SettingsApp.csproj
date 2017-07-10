@@ -79,6 +79,13 @@
     <Compile Include="Backup.Designer.cs">
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackupProfile.cs" />
+    <Compile Include="InputMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputMessageBox.Designer.cs">
+      <DependentUpon>InputMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputMessageBox.resx">
+      <DependentUpon>InputMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
