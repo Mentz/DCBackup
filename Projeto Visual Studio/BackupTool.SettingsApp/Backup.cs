@@ -11,12 +11,16 @@ using System.Diagnostics;
 using System.IO;
 
 namespace BackupTool.SettingsApp {
-    public partial class Backup: Form {
+    public partial class Backup : Form {
 
         #region InitMethods
 
+        private DateTime mPrevDate;
+        private bool mBusy;
+
         public Backup() {
             InitializeComponent();
+
             this.MaximumSize = this.MinimumSize = this.Size;
             backupItemList = new List<string>();
         }
@@ -63,7 +67,7 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFolders_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFolders.Checked) {
-                checkBoxDiferencial.Enabled = false;
+                checkBoxIncremental.Enabled = false;
                 buttonAddFile.Enabled = true;
                 buttonAddFolder.Enabled = false;
                 backupItemList.Clear();
@@ -73,7 +77,7 @@ namespace BackupTool.SettingsApp {
 
         private void radioButtonFiles_CheckedChanged(object sender, EventArgs e) {
             if (!radioButtonFiles.Checked) {
-                checkBoxDiferencial.Enabled = true;
+                checkBoxIncremental.Enabled = true;
                 buttonAddFile.Enabled = false;
                 buttonAddFolder.Enabled = true;
                 backupItemList.Clear();
@@ -116,7 +120,7 @@ namespace BackupTool.SettingsApp {
                             CheckToRemove = true;
                         }
                     }
-                    
+
                     if (CheckToRemove == false) {
                         backupItemList.Add(items);
                     }
@@ -140,9 +144,9 @@ namespace BackupTool.SettingsApp {
             FileDialog.ShowDialog();
 
             List<string> NovosItens = new List<string>();
-            foreach(string str in FileDialog.FileNames.ToList<String>()) {
+            foreach (string str in FileDialog.FileNames.ToList<String>()) {
                 bool check = false;
-                foreach(string item in listBoxSelectedItems.Items) {
+                foreach (string item in listBoxSelectedItems.Items) {
                     if (str == item)
                         check = true;
                 }
@@ -191,7 +195,7 @@ namespace BackupTool.SettingsApp {
         }
 
         private void radioButtonSemanal_CheckedChanged(object sender, EventArgs e) {
-            if(radioButtonSemanal.Checked == true) {
+            if (radioButtonSemanal.Checked == true) {
                 panelSemanal.Enabled = true;
                 panelCustomizado.Enabled = false;
                 panelMensal.Enabled = false;
@@ -199,8 +203,7 @@ namespace BackupTool.SettingsApp {
         }
 
         private void RadiobuttonMensal_CheckedChanged(object sender, EventArgs e) {
-            if(RadiobuttonMensal.Checked == true) {
-                comboBoxMensal.SelectedIndex = 0;
+            if (RadiobuttonMensal.Checked == true) {
                 panelSemanal.Enabled = false;
                 panelMensal.Enabled = true;
                 panelCustomizado.Enabled = false;
@@ -208,7 +211,7 @@ namespace BackupTool.SettingsApp {
         }
 
         private void radioButtonCustomizado_CheckedChanged(object sender, EventArgs e) {
-            if(radioButtonCustomizado.Checked == true) {
+            if (radioButtonCustomizado.Checked == true) {
                 panelSemanal.Enabled = false;
                 panelMensal.Enabled = false;
                 panelCustomizado.Enabled = true;

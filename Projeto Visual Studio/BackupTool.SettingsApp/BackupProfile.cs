@@ -12,9 +12,6 @@ namespace BackupTool.SettingsApp {
 
     }
 
-
-
-
     public class ODSettings {
         private string privateKey;
 

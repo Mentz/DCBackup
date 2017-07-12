@@ -106,7 +106,11 @@ namespace BackupTool.SettingsApp
         }
 
         private void directoryTree_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
-            e.Node.ImageKey = "OpenFolder";
+            if (e.Node.ImageIndex == 0) {
+                e.Node.ImageKey = "OpenFolder";
+                //MessageBox.Show("lul");
+            }
+
             if (e.Node.Nodes.Count > 0) {
                 if (e.Node.Nodes[0].Text == "..." && e.Node.Nodes[0].Tag == null) {
                     e.Node.Nodes.Clear();
@@ -186,8 +190,9 @@ namespace BackupTool.SettingsApp
 
         private void directoryTree_BeforeCollapse(object sender, TreeViewCancelEventArgs e) {
             //e.Node.ImageKey = "OpenFolder";
-            if (e.Node.ImageKey == "OpenFolder")
+            if (e.Node.ImageKey == "OpenFolder") {
                 e.Node.ImageKey = "Root";
+            }
         }
     }
 }
