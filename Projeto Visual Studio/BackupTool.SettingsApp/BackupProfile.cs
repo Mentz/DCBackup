@@ -56,7 +56,10 @@ namespace BackupTool.SettingsApp {
                 InputMessageBox pwQuery = new InputMessageBox("Proteger com senha", "Digite a senha desejada");
                 pwQuery.Show();
                 if (pwQuery.DialogResult == DialogResult.OK) {
-                    this.atributos = new ZipConfig(true, pwQuery.getText());
+                    if (pwQuery.getText() != "")
+                        this.atributos = new ZipConfig(true, pwQuery.getText());
+                    else
+                        this.atributos = new ZipConfig();
                 }
                 else {
                     this.atributos = new ZipConfig();
@@ -106,6 +109,16 @@ namespace BackupTool.SettingsApp {
             if (findFolder(folder))
                 return false;
             this.diretorios.Add(new FolderDescription(folder, maxAge, recursive));
+            return true;
+        }
+
+        public bool removeFolder(string folder) {
+            if (!findFolder(folder))
+                return false;
+            for (int i = 0; i < diretorios.Count; i++) {
+                if (diretorios[i].Path == folder)
+                    diretorios.RemoveAt(i);
+            }
             return true;
         }
     }
